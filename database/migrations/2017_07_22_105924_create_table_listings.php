@@ -18,6 +18,10 @@ class CreateTableListings extends Migration
             $table->string('title');
             $table->text('description');
             $table->string('address');
+            $table->string('lat', 20);
+            $table->string('lng', 20);
+            $table->decimal('distance_center', 3, 2);
+            $table->decimal('distance_stadium', 3, 2);
             $table->integer('no_people');
             $table->integer('no_beds');
             $table->date('date_from');
