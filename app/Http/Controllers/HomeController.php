@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Helpers\Location;
 
 class HomeController extends Controller
 {
@@ -13,6 +14,11 @@ class HomeController extends Controller
      */
     public function __construct()
     {
+        $test = Location::calculateWalkingDistance('40.858449', '21.4235062');
+
+        var_dump($test);
+        exit;
+
         $this->middleware('auth');
     }
 
