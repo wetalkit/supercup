@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\ListingRequest;
 use App\Listing;
+use App\ListingPictures;
+use Auth;
 
 class ListingController extends Controller
 {
@@ -17,6 +20,16 @@ class ListingController extends Controller
     {
        $stadiumLat = 42.0057531;
        $stadiumLon = 21.4235062;
+
+        $from = $request->input('from');
+        $to = $request->input('to');
+        $guests = $request->input('guests');
+        $distance = $request->input('distance');
+
+        $start = date("Y-m-d",strtotime($from));
+        $end = date("Y-m-d",strtotime($to));
+
+        $listings = Listing::whereBetween('date_from', [$start, $end])->get()->where('distance_stadium','<=', $distance*1000)->where('no_people','==', $guests);
 
        $listings = Listing::all();
 
@@ -32,25 +45,23 @@ class ListingController extends Controller
        return view('listings', compact('listings'));
     }
 
-
-
-function getWalkingDistance($lat1, $lat2, $long1, $long2)
-{
-    $url = "https://maps.googleapis.com/maps/api/distancematrix/json?origins=".$lat1.",".$long1."&destinations=".$lat2.",".$long2."&mode=walking";
-    $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, $url);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-    curl_setopt($ch, CURLOPT_PROXYPORT, 3128);
-    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
-    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
-    $response = curl_exec($ch);
-    curl_close($ch);
-    $response_a = json_decode($response, true);
-    $dist = $response_a['rows'][0]['elements'][0]['distance']['value'];
-    $time = $response_a['rows'][0]['elements'][0]['duration']['value'];
-    $d = $response_a['rows'][0]['elements'];
-    return array('distance' => $dist, 'time' => $time);
-}
+    function getWalkingDistance($lat1, $lat2, $long1, $long2)
+    {
+        $url = "https://maps.googleapis.com/maps/api/distancematrix/json?origins=".$lat1.",".$long1."&destinations=".$lat2.",".$long2."&mode=walking";
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_PROXYPORT, 3128);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+        $response = curl_exec($ch);
+        curl_close($ch);
+        $response_a = json_decode($response, true);
+        $dist = $response_a['rows'][0]['elements'][0]['distance']['value'];
+        $time = $response_a['rows'][0]['elements'][0]['duration']['value'];
+        $d = $response_a['rows'][0]['elements'];
+        return array('distance' => $dist, 'time' => $time);
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -59,7 +70,7 @@ function getWalkingDistance($lat1, $lat2, $long1, $long2)
      */
     public function create()
     {
-        //
+        return view('new_listing');
     }
 
     /**
@@ -68,19 +79,26 @@ function getWalkingDistance($lat1, $lat2, $long1, $long2)
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ListingRequest $request)
     {
-        $from = $request->input('from');
-        $to = $request->input('to');
-        $guests = $request->input('guests');
-        $distance = $request->input('distance');
-
-        $start = date("Y-m-d",strtotime($from));
-        $end = date("Y-m-d",strtotime($to));
-
-        $listings = Listing::whereBetween('date_from', [$start, $end])->get()->where('distance_stadium','<=', $distance*1000)->where('no_people','==', $guests);
-
-       return view('listings', compact('listings'));
+        $data = $request->except(['pictures']) + ['user_id' => Auth::user()->id];
+        $data = $data + [
+            'lat' => 0, 'lng' => 0, 'distance_stadium' => 0, 'distance_stadium_time' => 0
+        ];
+        $listing = Listing::create($data);
+        $pictures = $request->get('pictures');
+        $listingPictures = [];
+        foreach ($pictures as $key => $value) {
+            $listingPictures[]=[
+                'picture' => $value,
+                'listing_id' => $listing->id
+            ];
+            ListingPictures::create([
+                'picture' => $value,
+                'listing_id' => $listing->id
+            ]);
+        }
+        return redirect()->to(route('listing.index'));
     }
 
     /**
