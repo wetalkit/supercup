@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+
+
+use App\User;
 use App\Http\Requests\ListingRequest;
 use App\Listing;
 use App\ListingPictures;
@@ -105,7 +108,9 @@ class ListingController extends Controller
      */
     public function show($id)
     {
-        //
+        $details = Listing::find($id);
+        $user = User::find($details->user_id);
+        return view('listing-details', compact('details', 'user'));
     }
 
     /**

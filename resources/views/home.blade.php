@@ -8,7 +8,7 @@
                 <div class="panel-heading">Dashboard</div>
 
                 <div class="panel-body">
-                    You are logged in!
+                    <button >See TREBIT SMESTAJ</button>
                 </div>
             </div>
         </div>
