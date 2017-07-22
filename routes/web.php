@@ -33,3 +33,6 @@ Route::resource('contact', 'ContactController', ['names' => [
     'store' => 'contact.store',
 
 ]]);
+Route::get('/storage/{path}', function($path) {
+    return response()->file(storage_path().'/app/'.$path);
+})->name('storage')->where('path','(.*)');

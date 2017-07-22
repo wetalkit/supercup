@@ -19,18 +19,56 @@
             'csrfToken' => csrf_token(),
         ]) !!};
     </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    @yield('additionalCss')
+
     <style>
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
-      #map {
-        height: 100%;
-      }
+        #map {
+            height: 100%;
+        }
       /* Optional: Makes the sample page fill the window. */
-      html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        body{
+          background:#ccc;
+        }
+        .main {
+          font-family:Arial;
+          width:500px;
+          display:block;
+          margin:0 auto;
+        }
+        h3 {
+            background: #fff;
+            color: #3498db;
+            font-size: 36px;
+            line-height: 100px;
+            margin: 10px;
+            padding: 2%;
+            position: relative;
+            text-align: center;
+        }
+        .action{
+          display:block;
+          margin:100px auto;
+          width:100%;
+          text-align:center;
+        }
+        .action a {
+          display:inline-block;
+          padding:5px 10px; 
+          background:#f30;
+          color:#fff;
+          text-decoration:none;
+        }
+        .action a:hover{
+          background:#000;
+        }
     </style>
 </head>
 <body>
@@ -95,5 +133,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    @yield('additionalJs')
+    
 </body>
 </html>

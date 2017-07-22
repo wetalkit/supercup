@@ -6,7 +6,12 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">By {{$user->name}}  </div>
-                <img src="https://www.imgacademy.com/themes/custom/imgacademy/images/helpbox-contact.png"/>
+                    <div class="your-class">
+                       @foreach($details->pictures as $picture) 
+                        <img src="{{route('storage', $picture->picture)}}"/>
+                        @endforeach
+                    </div>
+                {{-- <img src="https://www.imgacademy.com/themes/custom/imgacademy/images/helpbox-contact.png"/> --}}
                 <div class="panel-body">
                     {{$details->description}}<br/>
                     Distance from stadium: {{$details->distance_stadium}} km<br/>
@@ -86,8 +91,34 @@
           });
         }
       }
+      
     </script>
+
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key={{env('API_KEY')}}&callback=initMap">
     </script>
+
+
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $('.your-class').slick({
+        dots: false,
+        infinite: true,
+        speed: 300,
+        slidesToShow: 1,
+        autoplay: true,
+        prevArrow: '<div class="slick-prev"><i class="fa fa-chevron-left"></i></div>',
+        nextArrow: '<div class="slick-next"><i class="fa fa-chevron-right"></i></div>'
+      });
+    });
+  </script>
+  @section('additionalCss')
+  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css"/>
+  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick-theme.css"/>
+  @endsection
+  @section('additionalJs')
+  <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+  <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>
+  @endsection
+  
 @endsection
