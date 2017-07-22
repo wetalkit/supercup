@@ -17,12 +17,12 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->string('name', 100);
             $table->string('email', 100);
-            $table->string('password');
+            $table->string('password')->nullable();
             $table->string('fb_id');
             $table->string('fb_link');
             $table->string('fb_avatar');
             $table->string('fb_token');
-            $table->tinyInteger('gender');
+            $table->string('gender', 20);
             $table->boolean('verified');
             $table->rememberToken();
             $table->timestamps();
