@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Listing;
-use App\User;
-class ListingController extends Controller
+use App\ListingContact;
+use Illuminate\Support\Facades\Auth;
+use App\Events\ContactHost;
+use App\Http\Requests\ListingContactRequest;
+class ContactController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -33,9 +35,17 @@ class ListingController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ListingContactRequest $request)
     {
-        //
+        $listing_id = $request->get('listing_id');
+        //$user_id = Auth::User()->id;
+        $user_id = 1;
+        $listingContact = new ListingContact();
+        $listingContact->sender_id = $user_id;
+        $listingContact->listing_id = $listing_id;
+        // $listingContact->sender_id = Auth::User()->id;
+        $listingContact->save();
+        // event(new ContactHost($user, $listing));
     }
 
     /**
@@ -46,9 +56,7 @@ class ListingController extends Controller
      */
     public function show($id)
     {
-        $details = Listing::find($id);
-        $user = User::find($details->user_id);
-        return view('listing-details', compact('details', 'user'));
+        //
     }
 
     /**

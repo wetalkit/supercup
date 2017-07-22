@@ -24,5 +24,12 @@ Route::group(['prefix' => 'book', 'middleware' => 'auth'], function (){
 
 
 Route::resource('listing', 'ListingController', ['names' => [
-    'create' => 'listing.create'
+    'create' => 'listing.create',
+    'show' => 'listing.show'
+]]);
+Route::resource('contact', 'ContactController', ['names' => [
+    'create' => 'contact.create',
+    'show' => 'contact.show',
+    'store' => 'contact.store',
+
 ]]);
