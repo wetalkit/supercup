@@ -86,19 +86,15 @@ class ListingController extends Controller
             'lat' => 0, 'lng' => 0, 'distance_stadium' => 0, 'distance_stadium_time' => 0
         ];
         $listing = Listing::create($data);
-        $pictures = $request->get('pictures');
-        $listingPictures = [];
-        foreach ($pictures as $key => $value) {
-            $listingPictures[]=[
-                'picture' => $value,
-                'listing_id' => $listing->id
-            ];
+        $pictures = $request->file('pictures');
+        foreach ($pictures as $picture) {
+            $path = $picture->store('listing_pictures');
             ListingPictures::create([
-                'picture' => $value,
+                'picture' => $path,
                 'listing_id' => $listing->id
             ]);
         }
-        return redirect()->to(route('listing.index'));
+        return redirect()->route('listing.index');
     }
 
     /**
