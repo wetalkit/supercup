@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\User;
 
 class Listing extends Model
 {
@@ -12,6 +13,15 @@ class Listing extends Model
     public function pictures()
     {
         return $this->hasMany(ListingPictures::class);
+    }
+
+    /**
+     * User relation
+     * @return App\User
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 
     public function setTermsAcceptedAttribute($value)
