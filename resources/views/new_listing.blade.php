@@ -35,7 +35,7 @@
                     <div class="form-group">
                         {!! Form::label('address', 'Address', ['class' => 'col-sm-3']) !!}
                         <div class="col-sm-6">
-                            {!! Form::text('address', null, ['class' => 'form-control']) !!}
+                            {!! Form::text('address', null, ['class' => 'form-control', 'id' => 'address']) !!}
                         </div>
                     </div>
                     <div class="form-group">
@@ -100,4 +100,23 @@
 @endsection
 @section('additionalJs')
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDn51pqaS1TiPFYgZAXBg-oetK6KQ6XnCY&libraries=places"></script>
+<script>
+    function initialize() {
+        var options = {
+            componentRestrictions: {country: "mk"}
+        };
+
+        var input = document.getElementById('address');
+        var autocomplete = new google.maps.places.Autocomplete(input, options);
+    }    
+    initialize();  
+    $('#address').change(function() {
+        console.log($(this).val());
+        $.ajax({
+            url: "https://maps.googleapis.com/maps/api/geocode/json?address="+$(this).val()+"&key=AIzaSyDn51pqaS1TiPFYgZAXBg-oetK6KQ6XnCY"
+        }).done(function(msg) {
+            console.log(msg.results[0]);
+        });
+    });
+</script>
 @endsection
