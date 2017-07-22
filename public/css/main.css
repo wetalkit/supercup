@@ -94,8 +94,6 @@ video {
     font: inherit;
     vertical-align:super;
 }
-
-
 /* HTML5 display-role reset for older browsers */
 
 article,
@@ -360,7 +358,7 @@ a:hover {
 
 a.become-a-host-btn {
     background: #e25626;
-    padding: 15px 25px;
+    padding: 10px 15px;
     width: 100%;
     max-width: 150px;
     border-radius: 3px;

@@ -22,12 +22,12 @@ $(document).ready(function() {
     });
 
     $('input[name="daterange"]').daterangepicker({
-        minDate: '04/08/2017',
-        maxDate: '10/08/2017',
-        startDate: '08/08/2017',
-        endDate: '09/08/2017',
+        minDate: '04 Aug',
+        maxDate: '10 Aug',
+        startDate: '08 Aug',
+        endDate: '09 Aug',
         locale: {
-          format: 'DD/MM/YYYY'
+          format: 'DD MMM'
         }
     });
 });

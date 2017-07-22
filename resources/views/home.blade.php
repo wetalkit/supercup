@@ -9,14 +9,34 @@
                 <h2 class="text-black">Motivated by the recent booking scandal in Skopje, the WeTalkIT community decided to prove that this town can be hospitable as well. This is a website created to offer free tourist accommodation in Skopje for the upcoming UEFA Super Cup 2017.</h1>
 
                 <div class="dropdown-holder row">
+
+                <style>
+                    .dropdown-holder input, 
+                    .dropdown-holder .bootstrap-select,
+                    .dropdown-holder .bootstrap-select button,
+                    .bootstrap-select.btn-group .dropdown-menu li,
+                    .bootstrap-select.btn-group .dropdown-menu li a:hover,
+                    .bootstrap-select.btn-group .dropdown-menu li a:focus,
+                    .bootstrap-select > .dropdown-toggle.bs-placeholder, 
+                    .bootstrap-select > .dropdown-toggle.bs-placeholder:hover, 
+                    .bootstrap-select > .dropdown-toggle.bs-placeholder:focus, 
+                    .bootstrap-select > .dropdown-toggle.bs-placeholder:active {
+                        border: none !important;
+                        box-shadow: none !important;
+                        padding-left: 0px !important;
+                        background: white;
+                    }
+                </style>
                     
                 {{ Form::open(['url' => '/', 'method' => 'GET']) }}
 
                     <div class="col-lg-3 col-sm-6">
-                        <input name="daterange" class="form-control" type="text"/>
+                        <label>When</label>
+                        <input name="daterange" class="form-control" type="text" placeholder="Anytime" />
                     </div>
 
                    <div class="dropdown col-lg-3 col-sm-6">
+                        <label>Beds</label>
                         <select name="number_beds" class="selectpicker" title="Number of Beds">
                             <option>1</option>
                             <option>2</option>
@@ -24,6 +44,7 @@
                     </div>
 
                    <div class="dropdown col-lg-3 col-sm-6">
+                        <label>Distance</label>
                         <select name="distance" class="selectpicker" title="Distance">
                             <option>< 1</option>
                             <option>< 2</option>
@@ -31,6 +52,7 @@
                    </div>
 
                     <div class="btn-holder col-lg-3 col-sm-6">
+                        <label>&nbsp;</label>
                         <button class="btn btn-primary btn-find">Find</button>
                     </div> 
 
