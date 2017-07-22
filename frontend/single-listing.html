@@ -25,11 +25,10 @@
     <header>
         <nav class="nav-wrapper">
             <div class="logo">
-                <img src="http://via.placeholder.com/150x90" class="logo">
+                <img src="images/logo.png" class="logo">
             </div>
             <ul class="menu js-main-nav">
                 <li><a href="" class="become-a-host-btn">Become a Host</a></li>
-                <li><a href="">FAQ</a></li>
                 <li><a href="">Login</a></li>
             </ul>
         </nav>
@@ -72,38 +71,33 @@
         </div>
     </div>
 
-    <section class="similar-places">
-        <div class="container">
-         <h2>Similar Places</h3>
-            <div class="col-md-4">
-                    <img src="https://placeholdit.co//i/300x300?&bg=grey">
-                    <h3 class="listing-author">by Anita Kirkovska</h3>
-                    <span class="distance">100m-200m distance -</span>
-                    <span class="nr-of-beds">2 beds</span>
-            </div>
-            <div class="col-md-4">
-                    <img src="https://placeholdit.co//i/300x300?&bg=grey">
-                    <h3 class="listing-author">by Anita Kirkovska</h3>
-                    <span class="distance">100m-200m distance -</span>
-                    <span class="nr-of-beds">2 beds</span>
-            </div>
-            <div class="col-md-4">
-                    <img src="https://placeholdit.co//i/300x300?&bg=grey">
-                    <h3 class="listing-author">by Anita Kirkovska</h3>
-                    <span class="distance">100m-200m distance -</span>
-                    <span class="nr-of-beds">2 beds</span>
-            </div>
-        </div>
-    </section>
+    
+    <div class="container">
+        <div class="col-md-8 col-md-offset-2">
+            <form method="POST" action="http://supercup.local.com/contact" accept-charset="UTF-8" class="form" enctype="multipart/form-data"><input name="_token" type="hidden" value="OX5DCAHKKPuucWDjgMetjthrv0ODgZWQjqDcGGWI">
+                 <div class="form-group">
+                        <label for="E-mail Address">E-mail Address</label>
+                        <input class="form-control" placeholder="Enter contact e-mail address" name="email" type="text">
+                </div>
+               <div class="form-group">
+                    <label for="Message:">Message:</label>
+                    <textarea class="form-control" placeholder="Enter message." name="message" cols="50" rows="10"></textarea>
+                </div>
+                <div class="form-group col-md-3 col-md-offset-9 col-xs-6 col-xs-offset-6">
+                        <input class="btn btn-primary form-control btn-send" type="submit" value="Send email">
+                </div>
+             </form>
+         </div>
+    </div>
 
-    <footer>
+   <!--  <footer>
         <div class="container">
             <div class="row">
                 <div class="copyright">Copyright - John Doe</div>
                 <div class="links">All links go here</div>
             </div>
         </div>
-    </footer>
+    </footer> -->
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
