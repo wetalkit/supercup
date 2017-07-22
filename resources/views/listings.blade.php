@@ -20,6 +20,11 @@
         $motiv = $listing['motiv'];
         $bedNum = $listing['no_beds'];
         $people = $listing['no_people'];
+        $latitude = $listing['lat'];
+        $longitude = $listing['lng'];
+        $distance_stadium_time = $listing['distance_stadium_time'];
+        $distance_stadium = $listing['distance_stadium'];
+
     @endphp
 
     <div class="card" style="  border-style: solid; border-width: 2px; width: 300px; margin-top: 10px; margin-left: 10px">
@@ -30,8 +35,10 @@
             <p class="card-text">Motiv: {{$motiv}}</p>
             <p class="card-text">Beds: {{$bedNum}}</p>
             <p class="card-text">People: {{$people}}</p>
-
-            <!-- <p class="card-text"><small class="text-muted"><{{$motiv}}></small></p> -->
+            <p class="card-text">latitude: {{$latitude}}</p>
+            <p class="card-text">longitude: {{$longitude}}</p>
+            <p class="card-text">Seconds: {{$distance_stadium_time}}</p>
+            <p class="card-text">Meters: {{$distance_stadium}}</p>
         </div>
     </div>
 
