@@ -11,10 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
-
+Route::get('/', 'HomeController@index');
 Route::get('/login', 'SocialAuthController@redirect')->name('login');
 Route::get('/callback', 'SocialAuthController@callback');
 Route::post('/logout', 'SocialAuthController@logout')->name('logout');
