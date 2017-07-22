@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Listing;
 
 class ListingController extends Controller
 {
@@ -11,9 +12,11 @@ class ListingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
-        //
+       $listings = Listing::all();
+        return view('listings', compact('listings'));
     }
 
     /**
@@ -23,7 +26,7 @@ class ListingController extends Controller
      */
     public function create()
     {
-        //
+        echo "CREATE";
     }
 
     /**
