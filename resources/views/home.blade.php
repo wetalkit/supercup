@@ -9,37 +9,32 @@
                 <h2 class="text-black">Motivated by the recent booking scandal in Skopje, the WeTalkIT community decided to prove that this town can be hospitable as well. This is a website created to offer free tourist accommodation in Skopje for the upcoming UEFA Super Cup 2017.</h1>
 
                 <div class="dropdown-holder row">
-                    <!-- Large button groups (default and split) -->
+                    
+                {{ Form::open(['url' => '/', 'method' => 'GET']) }}
+
                     <div class="col-lg-3 col-sm-6">
-                      <input class="form-control" type="text" name="daterange" value="01/01/2015 - 01/31/2015" />
+                        <input name="daterange" class="form-control" type="text"/>
                     </div>
 
                    <div class="dropdown col-lg-3 col-sm-6">
-                      <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                        Number of Beds
-                        <span class="caret"></span>
-                      </button>
-                      <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                        <li><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                      </ul>
+                        <select name="number_beds" class="selectpicker" title="Number of Beds">
+                            <option>1</option>
+                            <option>2</option>
+                        </select>
                     </div>
 
-                    <div class="dropdown col-lg-3 col-sm-6">
-                      <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                        Distance
-                        <span class="caret"></span>
-                      </button>
-                      <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                        <li><a href="#">&lt; 500m</a></li>
-                        <li><a href="#">&lt; 500m</a></li>
-                        <li><a href="#">&lt; 500m</a></li>
-                      </ul>
-                    </div> <!-- dropdown -->
+                   <div class="dropdown col-lg-3 col-sm-6">
+                        <select name="distance" class="selectpicker" title="Distance">
+                            <option>< 1</option>
+                            <option>< 2</option>
+                        </select>
+                   </div>
 
                     <div class="btn-holder col-lg-3 col-sm-6">
                         <button class="btn btn-primary btn-find">Find</button>
                     </div> 
+
+                {!! Form::close() !!}
 
                 </div> <!-- dropdown holder -->
             </div> <!-- wrapper -->
@@ -51,6 +46,33 @@
             <h1 class="title-heading">
                 <strong>Active Places</strong>
             </h1>
+
+            <a href="single-listing.html" class="link-item">
+                <div class="col-md-4 col-sm-6">
+                    <img src="https://placeholdit.co//i/350x300?&bg=grey">
+                        <h3 class="listing-author">by Anita Kirkovska</h3>
+                        <span class="distance">100m-200m distance -</span>
+                        <span class="nr-of-beds">2 beds</span>
+                </div>
+            </a>
+
+            <a href="single-listing.html" class="link-item">
+                <div class="col-md-4 col-sm-6">
+                    <img src="https://placeholdit.co//i/350x300?&bg=grey">
+                        <h3 class="listing-author">by Anita Kirkovska</h3>
+                        <span class="distance">100m-200m distance -</span>
+                        <span class="nr-of-beds">2 beds</span>
+                </div>
+            </a>
+
+            <a href="single-listing.html" class="link-item">
+                <div class="col-md-4 col-sm-6">
+                    <img src="https://placeholdit.co//i/350x300?&bg=grey">
+                        <h3 class="listing-author">by Anita Kirkovska</h3>
+                        <span class="distance">100m-200m distance -</span>
+                        <span class="nr-of-beds">2 beds</span>
+                </div>
+            </a>
 
             <a href="single-listing.html" class="link-item">
                 <div class="col-md-4 col-sm-6">

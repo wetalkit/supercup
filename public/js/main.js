@@ -3,50 +3,32 @@ $(document).ready(function() {
     var body = $('body');
     var menuTrigger = $('.js-menu-trigger');
     var mainOverlay = $('.js-main-overlay');
-	  google.maps.event.addDomListener(window, 'load', init_map);
-
-    //RESPONSIVE MENU START
+    
     menuTrigger.on('click', function(){
-        body.addClass('menu-is-active');
+      body.addClass('menu-is-active');
     });
     
     mainOverlay.on('click', function(){
-        body.removeClass('menu-is-active');
+      body.removeClass('menu-is-active');
     });
 
     $('.menu li a').on('click', function(){
-        $("body").removeClass("menu-is-active");
+      $('body').removeClass('menu-is-active');
     });
 
-
-     // FAQ INITIALIZER
-    $(".faq-title").click(function(){
-        $(this).next().find(".faq-toggle").slideToggle("fast");
-        $(this).toggleClass("active ");
+    $('.faq-title').click(function(){
+        $(this).next().find('.faq-toggle').slideToggle('fast');
+        $(this).toggleClass('active');
     });
 
-
-    //GOOGLE MAP
-      function init_map() {
-
-        var var_location = new google.maps.LatLng(41.9973,21.4280);
-
-        var var_mapoptions = {
-          center: var_location,
-          zoom: 14
-        };
-
-        var var_marker = new google.maps.Marker({
-          position: var_location,
-          map: var_map,
-          title:"Venice"
-        });
-
-        var var_map = new google.maps.Map(document.getElementById("map-container"),
-            var_mapoptions);
-
-        var_marker.setMap(var_map);
-
-      }
+    $('input[name="daterange"]').daterangepicker({
+        minDate: '04/08/2017',
+        maxDate: '10/08/2017',
+        startDate: '08/08/2017',
+        endDate: '09/08/2017',
+        locale: {
+          format: 'DD/MM/YYYY'
+        }
+    });
 });
 
