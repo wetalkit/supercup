@@ -24,3 +24,8 @@ Route::group(['prefix' => 'book', 'middleware' => 'auth'], function (){
         return "Here comes the book view";
     });
 });
+
+
+Route::resource('listing', 'ListingController', ['names' => [
+    'create' => 'listing.create'
+]]);
