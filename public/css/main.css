@@ -227,10 +227,10 @@ header {
     width: 100%;
     background: white;
     color: #484848;
-    padding-left: 20px;
+    padding-top: 15px;
 }
 .logo {
-    max-width: 140px;
+    max-width: 200px;
 }
 section.hero .container {
     padding: 70px 15px;
@@ -561,6 +561,12 @@ body.single-listing .row {
 }
 .dropdown-holder .bootstrap-select.btn-group .dropdown-toggle .filter-option {
     line-height: 25px;
+}
+.dropdown-holder input.form-control, .btn-find {
+    height: 39px !important;
+}
+.dropdown-holder .dropdown .bootstrap-select {
+    margin: 0px !important;
 }
 /* MEDIA QUERIES / RESPONSIVENESS START */
 

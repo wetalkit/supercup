@@ -9,21 +9,12 @@
     <title>{{ config('app.name', 'Super Cup 2017 Accommodation') }}</title>
     
     <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
-
-    {{-- <link href="//fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet"> --}}
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/bootstrap-select.css') }}" rel="stylesheet">
     <link href="{{ asset('css/bootstrap-theme.min.css') }}" rel="stylesheet">    
     <link href="{{ asset('css/daterangepicker.css') }}" rel="stylesheet">
     <link href="{{ asset('css/main.css') }}" rel="stylesheet">
-    <style type="text/css">
-    .dropdown-holder input.form-control, .btn-find {
-        height: 39px !important;
-    }
-    .dropdown-holder .dropdown .bootstrap-select {
-        margin: 0px !important;
-    }
-    </style>
+
     <script>
         window.Laravel = {!! json_encode([
             'csrfToken' => csrf_token(),
