@@ -24,5 +24,6 @@ Route::group(['prefix' => 'book', 'middleware' => 'auth'], function (){
 
 
 Route::resource('listing', 'ListingController', ['names' => [
+    'index' => 'listing.index',
     'create' => 'listing.create'
 ]]);
