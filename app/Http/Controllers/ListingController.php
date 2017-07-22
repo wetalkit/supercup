@@ -32,6 +32,8 @@ class ListingController extends Controller
        return view('listings', compact('listings'));
     }
 
+
+
 function getWalkingDistance($lat1, $lat2, $long1, $long2)
 {
     $url = "https://maps.googleapis.com/maps/api/distancematrix/json?origins=".$lat1.",".$long1."&destinations=".$lat2.",".$long2."&mode=walking";
@@ -57,7 +59,7 @@ function getWalkingDistance($lat1, $lat2, $long1, $long2)
      */
     public function create()
     {
-        echo "CREATE";
+        //
     }
 
     /**
@@ -68,7 +70,17 @@ function getWalkingDistance($lat1, $lat2, $long1, $long2)
      */
     public function store(Request $request)
     {
-        //
+        $from = $request->input('from');
+        $to = $request->input('to');
+        $guests = $request->input('guests');
+        $distance = $request->input('distance');
+
+        $start = date("Y-m-d",strtotime($from));
+        $end = date("Y-m-d",strtotime($to));
+
+        $listings = Listing::whereBetween('date_from', [$start, $end])->get()->where('distance_stadium','<=', $distance*1000)->where('no_people','==', $guests);
+
+       return view('listings', compact('listings'));
     }
 
     /**
