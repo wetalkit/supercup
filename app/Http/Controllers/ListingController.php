@@ -3,10 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+
+
+use App\User;
 use App\Http\Requests\ListingRequest;
 use App\Listing;
 use App\ListingPictures;
 use Auth;
+use App\Helpers\Location;
 
 class ListingController extends Controller
 {
@@ -15,9 +19,31 @@ class ListingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+
+    public function index(Request $request)
     {
-        //
+        $from = $request->input('from');
+        $to = $request->input('to');
+        $guests = $request->input('guests');
+        $distance = $request->input('distance');
+
+        $start = date("Y-m-d",strtotime($from));
+        $end = date("Y-m-d",strtotime($to));
+
+        $listings = Listing::whereBetween('date_from', [$start, $end])->get()->where('distance_stadium','<=', $distance*1000)->where('no_people','==', $guests);
+
+        $listings = Listing::all();
+
+        // foreach ($listings as $listing) {
+        //     if ($listing->distance_stadium == 0.0){
+        //        $destination = Location::calculateWalkingDistance($stadiumLat, $listing->lat,$stadiumLon, $listing->lng);
+        //        $listing->distance_stadium =  $destination["distance"];
+        //        $listing->distance_stadium_time = $destination["time"];
+        //        $listing->save();
+        //     }
+        // }
+
+       return view('listings', compact('listings'));
     }
 
     /**
@@ -43,19 +69,15 @@ class ListingController extends Controller
             'lat' => 0, 'lng' => 0, 'distance_stadium' => 0, 'distance_stadium_time' => 0
         ];
         $listing = Listing::create($data);
-        $pictures = $request->get('pictures');
-        $listingPictures = [];
-        foreach ($pictures as $key => $value) {
-            $listingPictures[]=[
-                'picture' => $value,
-                'listing_id' => $listing->id
-            ];
+        $pictures = $request->file('pictures');
+        foreach ($pictures as $picture) {
+            $path = $picture->store('listing_pictures');
             ListingPictures::create([
-                'picture' => $value,
+                'picture' => $path,
                 'listing_id' => $listing->id
             ]);
         }
-        return redirect()->to(route('listing.index'));
+        return redirect()->route('listing.index');
     }
 
     /**
@@ -66,7 +88,9 @@ class ListingController extends Controller
      */
     public function show($id)
     {
-        //
+        $details = Listing::find($id);
+        $user = User::find($details->user_id);
+        return view('listing-details', compact('details', 'user'));
     }
 
     /**

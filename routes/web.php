@@ -23,7 +23,19 @@ Route::group(['prefix' => 'book', 'middleware' => 'auth'], function (){
 });
 
 
-Route::resource('listing', 'ListingController', ['names' => [
-    'index' => 'listing.index',
-    'create' => 'listing.create'
+Route::resource('listing', 'ListingController', ['names' => [ 
+    'create' => 'listing.create',
+    'show' => 'listing.show',
+    'index' => 'listing.index'
 ]]);
+
+Route::resource('contact', 'ContactController', ['names' => [
+    'create' => 'contact.create',
+    'show' => 'contact.show',
+    'store' => 'contact.store',
+
+]]);
+
+Route::get('/storage/{path}', function($path) {
+    return response()->file(storage_path().'/app/'.$path);
+})->name('storage')->where('path','(.*)');

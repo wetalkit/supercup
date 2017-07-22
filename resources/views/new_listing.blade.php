@@ -8,7 +8,7 @@
                 <div class="panel-heading">New listing</div>
 
                 <div class="panel-body">
-                    {!! Form::open(['route' => ['listing.store'], 'class' => 'form-horizontal']) !!}
+                    {!! Form::open(['route' => ['listing.store'], 'class' => 'form-horizontal', 'enctype' => 'multipart/form-data']) !!}
                     @if($errors->any())
                     <div class="form-group">
                         <div class="col-sm-6 col-sm-offset-3">
@@ -97,4 +97,7 @@
         </div>
     </div>
 </div>
+@endsection
+@section('additionalJs')
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDn51pqaS1TiPFYgZAXBg-oetK6KQ6XnCY&libraries=places"></script>
 @endsection
