@@ -179,7 +179,10 @@ return [
 
         Laravel\Socialite\SocialiteServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
+<<<<<<< HEAD
 
+=======
+>>>>>>> 06102a9fabd4312672ee5d629834d1394928d6b0
     ],
 
     /*
@@ -231,7 +234,10 @@ return [
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
+<<<<<<< HEAD
 
+=======
+>>>>>>> 06102a9fabd4312672ee5d629834d1394928d6b0
     ],
 
 ];

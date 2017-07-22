@@ -3,8 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Listing;
+
+
 use App\User;
+use App\Http\Requests\ListingRequest;
+use App\Listing;
+use App\ListingPictures;
+use Auth;
+
 class ListingController extends Controller
 {
     /**
@@ -24,7 +30,7 @@ class ListingController extends Controller
      */
     public function create()
     {
-        //
+        return view('new_listing');
     }
 
     /**
@@ -33,9 +39,26 @@ class ListingController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ListingRequest $request)
     {
-        //
+        $data = $request->except(['pictures']) + ['user_id' => Auth::user()->id];
+        $data = $data + [
+            'lat' => 0, 'lng' => 0, 'distance_stadium' => 0, 'distance_stadium_time' => 0
+        ];
+        $listing = Listing::create($data);
+        $pictures = $request->get('pictures');
+        $listingPictures = [];
+        foreach ($pictures as $key => $value) {
+            $listingPictures[]=[
+                'picture' => $value,
+                'listing_id' => $listing->id
+            ];
+            ListingPictures::create([
+                'picture' => $value,
+                'listing_id' => $listing->id
+            ]);
+        }
+        return redirect()->to(route('listing.index'));
     }
 
     /**

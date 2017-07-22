@@ -21,14 +21,14 @@ class CreateTableListings extends Migration
             $table->string('lat', 20);
             $table->string('lng', 20);
             $table->decimal('distance_stadium', 5, 2);
-            $table->integer('distance_cstadium_time');
+            $table->integer('distance_stadium_time');
             $table->integer('no_people');
             $table->integer('no_beds');
             $table->date('date_from');
             $table->date('date_to');
             $table->boolean('terms_accepted');
             $table->string('contact_email');
-            $table->text('motiv');
+            $table->text('motiv')->nullable();
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
