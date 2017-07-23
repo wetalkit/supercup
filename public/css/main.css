@@ -406,9 +406,12 @@ section.hero {
     margin: 10px 0 0 0;
 }
 
+.listingform .heading {
+    margin: 50px 0 30px;
+}
+
 .listingform h1 {
     font-size: 30px;
-    margin: 50px 0 30px;
 }
 
 

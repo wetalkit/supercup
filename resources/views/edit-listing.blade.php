@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="wrapper listingform">
-        <div class="row">
+        <div class="row heading">
             <div class="col-md-9">
                 <h1>{{$listing->title}}</h1>
             </div>
