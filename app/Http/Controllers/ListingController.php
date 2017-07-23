@@ -34,15 +34,6 @@ class ListingController extends Controller
 
         $listings = Listing::all();
 
-        // foreach ($listings as $listing) {
-        //     if ($listing->distance_stadium == 0.0){
-        //        $destination = Location::calculateWalkingDistance($stadiumLat, $listing->lat,$stadiumLon, $listing->lng);
-        //        $listing->distance_stadium =  $destination["distance"];
-        //        $listing->distance_stadium_time = $destination["time"];
-        //        $listing->save();
-        //     }
-        // }
-
        return view('listings', compact('listings'));
     }
 

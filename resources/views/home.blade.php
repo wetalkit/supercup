@@ -9,24 +9,6 @@
                 <h2 class="text-black">Motivated by the recent booking scandal in Skopje, the WeTalkIT community decided to prove that this town can be hospitable as well. This is a website created to offer free tourist accommodation in Skopje for the upcoming UEFA Super Cup 2017.</h1>
 
                 <div class="dropdown-holder row">
-
-                <style>
-                    .dropdown-holder input, 
-                    .dropdown-holder .bootstrap-select,
-                    .dropdown-holder .bootstrap-select button,
-                    .bootstrap-select.btn-group .dropdown-menu li,
-                    .bootstrap-select.btn-group .dropdown-menu li a:hover,
-                    .bootstrap-select.btn-group .dropdown-menu li a:focus,
-                    .bootstrap-select > .dropdown-toggle.bs-placeholder, 
-                    .bootstrap-select > .dropdown-toggle.bs-placeholder:hover, 
-                    .bootstrap-select > .dropdown-toggle.bs-placeholder:focus, 
-                    .bootstrap-select > .dropdown-toggle.bs-placeholder:active {
-                        border: none !important;
-                        box-shadow: none !important;
-                        padding-left: 0px !important;
-                        background: white;
-                    }
-                </style>
                     
                 {{ Form::open(['url' => '/', 'method' => 'GET']) }}
 
@@ -69,60 +51,23 @@
                 <strong>Active Places</strong>
             </h1>
 
-            <a href="single-listing.html" class="link-item">
-                <div class="col-md-4 col-sm-6">
-                    <img src="https://placeholdit.co//i/350x300?&bg=grey">
-                        <h3 class="listing-author">by Anita Kirkovska</h3>
-                        <span class="distance">100m-200m distance -</span>
-                        <span class="nr-of-beds">2 beds</span>
-                </div>
-            </a>
+            @foreach($listings as $listing)
 
-            <a href="single-listing.html" class="link-item">
-                <div class="col-md-4 col-sm-6">
-                    <img src="https://placeholdit.co//i/350x300?&bg=grey">
-                        <h3 class="listing-author">by Anita Kirkovska</h3>
-                        <span class="distance">100m-200m distance -</span>
-                        <span class="nr-of-beds">2 beds</span>
-                </div>
-            </a>
+              <a href="{{ route('listing.show', $listing->id) }}" class="link-item">
+                  <div class="col-md-4 col-sm-6">
+                    <div class="gallery-section">
+                      @foreach($listing->pictures as $image)
+                        <img src="{!! route('storage', $image->picture) !!}" alt={!! $image->title !!}>
+                      @endforeach
+                    </div>
+                    <h3 class="listing-author">by {!! $listing->user->name !!}</h3>
+                    <span class="distance">{!! $listing->distance_stadium_time !!} mins distance</span>
+                    <span>-</span>
+                    <span class="nr-of-beds">{!! $listing->no_beds !!} beds</span>
+                  </div>
+              </a>
 
-            <a href="single-listing.html" class="link-item">
-                <div class="col-md-4 col-sm-6">
-                    <img src="https://placeholdit.co//i/350x300?&bg=grey">
-                        <h3 class="listing-author">by Anita Kirkovska</h3>
-                        <span class="distance">100m-200m distance -</span>
-                        <span class="nr-of-beds">2 beds</span>
-                </div>
-            </a>
-
-            <a href="single-listing.html" class="link-item">
-                <div class="col-md-4 col-sm-6">
-                    <img src="https://placeholdit.co//i/350x300?&bg=grey">
-                        <h3 class="listing-author">by Anita Kirkovska</h3>
-                        <span class="distance">100m-200m distance -</span>
-                        <span class="nr-of-beds">2 beds</span>
-                </div>
-            </a>
-
-            <a href="single-listing.html" class="link-item">
-                <div class="col-md-4 col-sm-6">
-                    <img src="https://placeholdit.co//i/350x300?&bg=grey">
-                        <h3 class="listing-author">by Anita Kirkovska</h3>
-                        <span class="distance">100m-200m distance -</span>
-                        <span class="nr-of-beds">2 beds</span>
-                </div>
-            </a>
-
-            <a href="single-listing.html" class="link-item">
-                <div class="col-md-4 col-sm-6">
-                    <img src="https://placeholdit.co//i/350x300?&bg=grey">
-                        <h3 class="listing-author">by Anita Kirkovska</h3>
-                        <span class="distance">100m-200m distance -</span>
-                        <span class="nr-of-beds">2 beds</span>
-                </div>
-            </a>
-
+            @endforeach
 
         </div>
     </section>

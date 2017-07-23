@@ -28,7 +28,9 @@
     <header>
         <nav class="nav-wrapper">
             <div class="logo">
-                <img src="images/logo.png" class="logo">
+                <a href="{{ url('/') }}">
+                    <img src="images/logo.png" class="logo">
+                </a>
             </div>
             <ul class="menu js-main-nav">
                 <li><a href="{{ route('listing.create') }}" class="become-a-host-btn">Become a Host</a></li>
@@ -62,6 +64,8 @@
 
     @yield('content')
 
+    @include('layouts.footer')
+    
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap-select.js') }}"></script>
