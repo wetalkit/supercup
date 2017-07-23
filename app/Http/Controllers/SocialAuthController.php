@@ -16,16 +16,21 @@ class SocialAuthController extends Controller
     {
         $providerUser = \Socialite::driver('facebook')->user();
 
-        if (!$user = User::where('fb_id', object_get($providerUser,'id'))->first()) {
+        if (!$user = User::where('fb_id', object_get($providerUser, 'id'))->first()) {
+            
+            if (!$fbEmail = object_get($providerUser, 'email')) {
+                $fbEmail = object_get($providerUser, 'id').'@facebook.com';
+            }
+
             $user = User::create([
                 'name' => object_get($providerUser, 'name'),
-                'email' => object_get($providerUser, 'email'),
+                'email' => $fbEmail,
                 'fb_id' => object_get($providerUser, 'id'),
                 'fb_link' => object_get($providerUser, 'profileUrl'),
                 'fb_avatar' => object_get($providerUser, 'avatar'),
                 'fb_token' => object_get($providerUser, 'token'),
-                'verified' => array_get(object_get($providerUser, 'user'),'verified'),
-                'gender' => array_get(object_get($providerUser, 'user'),'gender'),
+                'verified' => array_get(object_get($providerUser, 'user'), 'verified'),
+                'gender' => array_get(object_get($providerUser, 'user'), 'gender'),
             ]);
         }
 
