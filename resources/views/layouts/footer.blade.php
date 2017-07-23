@@ -2,10 +2,10 @@
 	<div class="container">
 	<hr/>
 
-		<div class="supportedBy col-lg-2 col-sm-2">
-			<label>With <i class="glyphicon glyphicon-heart-empty"></i> by <a href="https://wetalkit.xyz" target="_blank">{!! env('APP_WETALKIT') !!}</a></label>
+		<div class="supportedBy col-lg-3 col-sm-3">
+			<label>Built with <i class="glyphicon glyphicon-heart-empty"></i> by <a href="https://wetalkit.xyz" target="_blank">{!! env('APP_WETALKIT') !!}</a></label>
 		</div>
-		<div class="links-group col-lg-6 col-sm-6 col-sm-offset-3">
+		<div class="links-group col-lg-6 col-sm-6 col-sm-offset-2">
 			<ul class="links-nav">
 				<li><a href="#">About</li>
 				<li><a href="/faq">FAQ</a></li>

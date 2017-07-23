@@ -51,6 +51,10 @@
                 <strong>Active Places</strong>
             </h1>
 
+            @if(!$listings->count())
+            <p>There aren't any available listings at the moment. Please check back later.</p>
+            @endif 
+
             @foreach($listings as $listing)
 
               <a href="{{ route('listing.show', $listing->id) }}" class="link-item">
