@@ -61,7 +61,7 @@
                 </p>
             </div>
             <div class="col-md-2 col-sm-6">
-            {!! Form::select('no_people', [1,2], null, ['class' => 'selectpicker', 'required' => true]) !!}
+            {!! Form::select('no_people', [1 => 1, 2 => 2], null, ['class' => 'selectpicker', 'required' => true]) !!}
             </div>
             @foreach($errors->get('no_people') as $error)
             <p class="form-error">{{$error}}</p>
@@ -77,7 +77,7 @@
                 </p>
             </div>
             <div class="col-md-2 col-sm-6">
-            {!! Form::select('no_beds', [1,2], null, ['class' => 'selectpicker', 'required' => true]) !!}
+            {!! Form::select('no_beds', [1 => 1, 2 => 2], null, ['class' => 'selectpicker', 'required' => true]) !!}
             </div>
             @foreach($errors->get('no_beds') as $error)
             <p class="form-error">{{$error}}</p>
