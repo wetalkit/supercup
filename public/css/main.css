@@ -417,6 +417,39 @@ section.hero {
      margin-left: 0; 
 }
 
+.gallery-section.booked {
+    position: relative;
+}
+
+.gallery-section.booked img:before {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: #000;
+}
+
+.label.booked {
+    float: right;
+    padding: 10px 20px;
+    font-size: 100%;
+}
+
+.gallery-section .label-booked {
+    display: none;
+    background-color: #e25626;
+    position: absolute;
+    top: 5%;
+    right: 5%;
+    padding: 10px 20px;
+    font-size: 100%;
+}
+
+.gallery-section.booked .label-booked {
+    display: inline-block;
+}
+
 .text-center {
     text-align: center;
 }
