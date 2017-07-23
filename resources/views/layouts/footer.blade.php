@@ -7,9 +7,9 @@
 		</div>
 		<div class="links-group col-lg-6 col-sm-6 col-sm-offset-2">
 			<ul class="links-nav">
-				<li><a href="#">About</li>
+				<li><a href="/about">About</li>
 				<li><a href="/faq">FAQ</a></li>
-				<li><a href="">Privacy</a></li>
+				<li><a href="/privacy">Privacy</a></li>
 			</ul>
 		</div>
 		<div class="links-group col-lg-1 col-sm-1">

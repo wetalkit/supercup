@@ -585,6 +585,9 @@ h1.h1-faq {
     line-height: 33px;
 }
 
+.about .faq-single:first-child {
+    border: none;
+}
 
 h5.faq-title {
     margin-bottom: 7px;
