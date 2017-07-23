@@ -49,6 +49,11 @@
                         </a>
                         <ul class="dropdown-menu" role="menu">
                             <li>
+                                @foreach(Auth::user()->listings as $listing)
+                                <a href="{{ route('listing.edit', $listing->id) }}">
+                                    {{$listing->title}}
+                                </a>
+                                @endforeach
                                 <a href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
                                              document.getElementById('logout-form').submit();">
@@ -82,6 +87,5 @@
     @yield('additionalJs')
 
     @include('modals.signup')
-
 </body>
 </html>

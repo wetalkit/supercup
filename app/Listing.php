@@ -32,14 +32,9 @@ class Listing extends Model
         return $this->belongsTo(User::class);
     }
 
-    /**
-     * Terms Accepted
-     * 
-     * @param string
-     */
-    public function setTermsAcceptedAttribute($value)
+    public function contacts()
     {
-        $this->attributes['terms_accepted'] = $value == 'on' ? 1 : 0;
+        return $this->hasMany(ListingContact::class);
     }
 
     /**

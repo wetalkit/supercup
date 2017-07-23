@@ -27,12 +27,16 @@ class Location
         curl_close($ch);
         $response_a = json_decode($response, true);
 
-        if (isset($response_a['rows'][0]['elements'][0]['distance']['value'])) {
-            $distance = $response_a['rows'][0]['elements'][0]['distance']['value'];
-        }
+        try {
+            if (isset($response_a['rows'][0]['elements'][0]['distance']['value'])) {
+                $distance = $response_a['rows'][0]['elements'][0]['distance']['value'];
+            }
 
-        if ($response_a['rows'][0]['elements'][0]['duration']['value']) {
-            $time = $response_a['rows'][0]['elements'][0]['duration']['value'];
+            if ($response_a['rows'][0]['elements'][0]['duration']['value']) {
+                $time = $response_a['rows'][0]['elements'][0]['duration']['value'];
+            }
+        } catch (Exception $e) {
+            
         }
         
         return ['distance' => $distance, 'time' => $time];

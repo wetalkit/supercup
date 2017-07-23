@@ -12,7 +12,7 @@ class ListingPictures extends Model
 
     public function listing()
     {
-        return $this->belongsTo('App\Listing');
+        return $this->belongsTo(Listing::class);
     }
 }
 

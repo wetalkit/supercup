@@ -346,10 +346,13 @@ section.hero {
     padding: 25px;
 }
 
+<<<<<<< HEAD
 .daterangepicker td.active {
     background-color: #e25626;
 }
 
+=======
+>>>>>>> master
 .dropdown-holder input, 
 .dropdown-holder .bootstrap-select,
 .dropdown-holder .bootstrap-select button,
@@ -392,7 +395,59 @@ section.hero {
     max-width:95%;
     max-height:95%;
 }
+.form-error {
+    font-size: 12px;
+    color: red;
+    line-height: 15px;
+    margin: 10px 0 0 0;
+}
 
+.listingform .form-group {
+     margin-right: 0; 
+     margin-left: 0; 
+}
+
+.text-center {
+    text-align: center;
+}
+
+.listing-images {
+    padding: 20px 0;
+}
+
+.listing-images .img-wrap {
+    margin-right: 20px;
+    display: inline-block;
+    position: relative;
+}
+
+.listing-images .img-wrap .overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: rgb(226, 86, 38);
+    display: none;
+}
+
+.listing-images .img-wrap:hover .overlay, .listing-images .img-wrap:hover a {
+    display: block;
+}
+
+.listing-images .img-wrap a {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    color: white;
+    font-size: 30px;
+    display: none;
+}
+
+.listing-images .img-wrap img {
+    max-width: 150px;
+}
 /* ACTIVE PLACES SECTION */
 section.active-places .row {
     padding: 50px 10px;
