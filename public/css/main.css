@@ -671,6 +671,9 @@ body.single-listing .row {
 .details span {
     color: #e25626;
 }
+.modal-footer .btn-orange {
+    line-height: 14px;
+}
 /* MEDIA QUERIES / RESPONSIVENESS START */
 
 /* RESPONSIVE MENU START*/
