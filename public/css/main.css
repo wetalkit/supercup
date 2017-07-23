@@ -726,11 +726,18 @@ body.single-listing .row {
 }
 .heading .by div{
     display: inline-block;
+    line-height: 26px;
 }
-.heading .by img {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
+.heading .by .img {
+    width: 40px;
+    height: 40px;
+    background-size: cover;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-transform: translate(0px, 13px);
+    -webkit-transform: translate(0px, 13px);
+    transform: translate(0px, 13px);
 }
 .listing-details .details h5{
     font-size: 22px;

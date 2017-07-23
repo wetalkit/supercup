@@ -12,7 +12,7 @@
             <div class="title"><h2>{!! $listing->title !!}</h2></div>
             <div class="by">
               <label>by</label> 
-              <div class="img"><img src="{!! $listing->user->fb_avatar !!}"/></div>
+              <div class="img" style="background-image: url('{!! $listing->user->fb_avatar !!}');"></div>
               <div class="name">
                   <a href="{!! $listing->user->fb_link !!}" target="_blank">{!! $listing->user->name !!}</a>
               </div>
