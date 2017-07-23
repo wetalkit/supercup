@@ -1,14 +1,15 @@
 <footer>
 	<div class="container">
+	<hr/>
+
 		<div class="supportedBy col-lg-2 col-sm-2">
-			<label>With <i class="glyphicon glyphicon-heart-empty"></i> by <a href="https://wetalkit.xyz">WeTalkIT</a></label>
+			<label>With <i class="glyphicon glyphicon-heart-empty"></i> by <a href="https://wetalkit.xyz" target="_blank">{!! env('APP_WETALKIT') !!}</a></label>
 		</div>
 		<div class="links-group col-lg-6 col-sm-6 col-sm-offset-3">
 			<ul class="links-nav">
-				<li href="#">About</li>
-				<li href="#">FAQ</li>
-				<li href="#">Privacy</li>
-				<li href="#">Terms & Conditions</li>
+				<li><a href="#">About</li>
+				<li><a href="/faq">FAQ</a></li>
+				<li><a href="">Privacy</a></li>
 			</ul>
 		</div>
 		<div class="links-group col-lg-1 col-sm-1">

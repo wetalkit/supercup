@@ -23,9 +23,18 @@ class HomeController extends Controller
      */
     public function index()
     {
-
         $listings = Listing::all();
 
         return view('home', compact('listings'));
+    }
+
+    /**
+     * Faq page
+     * 
+     * @return view
+     */
+    public function faq()
+    {
+        return view('faq');
     }
 }

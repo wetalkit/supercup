@@ -201,6 +201,14 @@ ol li {
     clear: both;
 }
 
+a {
+    color: #e25626;
+}
+
+a:hover {
+    color: #ce4719;
+}
+
 /*HELPER CLASS END*/
 
 * {
@@ -229,7 +237,7 @@ header {
 .logo {
     max-width: 200px;
 }
-section.hero .container {
+section.hero .container, section.listing .container, section.error {
     padding: 70px 15px;
 }
 .container {
@@ -388,7 +396,7 @@ a:hover {
     text-decoration: none;
 }
 
-a.become-a-host-btn {
+a.become-a-host-btn, .btn-orange {
     background: #e25626;
     padding: 10px 15px;
     width: 100%;
@@ -398,7 +406,7 @@ a.become-a-host-btn {
     color: white;
 }
 
-a.become-a-host-btn:hover {
+a.become-a-host-btn:hover, .btn-orange:hover {
      background: #ce4719;
      color: white;
      text-decoration: none;
@@ -428,8 +436,8 @@ button.dropdown-toggle:active {
      border: 1px solid #e25626 !important;
      outline: none;
      -webkit-appearance: none;
-   -moz-appearance:    none;
-   appearance:         none;
+    -moz-appearance:    none;
+    appearance:         none;
 }
 
 
@@ -605,6 +613,34 @@ body.single-listing .row {
 .dropdown-holder .dropdown .bootstrap-select {
     margin: 0px !important;
 }
+.listing h2 {
+    color: #e25626;
+    margin-bottom: 5px;
+    font-size: 28px;
+}
+.listing .heading {
+    margin-bottom: 15px;
+    display: block;
+}
+.heading .by div{
+    display: inline-block;
+}
+.heading .by img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+.listing-details .details h5{
+    font-size: 22px;
+    line-height: 22px;
+    margin-bottom: 22px;
+    font-weight: 400px;
+}
+.listing-details .details p{
+    font-size: 17px;
+    line-height: 24px;
+}
+
 /* MEDIA QUERIES / RESPONSIVENESS START */
 
 /* RESPONSIVE MENU START*/
@@ -694,18 +730,15 @@ body.single-listing .row {
         top: 25px;
         z-index: 10;
     }
-
-    a.become-a-host-btn {
+    a.become-a-host-btn, .btn-orange {
         background: none;
         padding: 0;
         max-width: none;
         border-radius: none;
     }
-
-    a.become-a-host-btn:hover {
+    a.become-a-host-btn:hover, .btn-orange:hover {
         background: transparent;
     }
-
 
 @media only screen and (max-width: 768px) {
     section.hero .container {
