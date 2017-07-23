@@ -640,6 +640,15 @@ body.single-listing .row {
     font-size: 17px;
     line-height: 24px;
 }
+.facebook, .facebook:hover {
+    background-color: #3b5999;
+    border: 2px solid #3b5999;
+    color: #fff;
+    width: 100%;
+    height: 40px;
+    padding-top: 2%;
+    margin-top: 2%;
+}
 
 /* MEDIA QUERIES / RESPONSIVENESS START */
 

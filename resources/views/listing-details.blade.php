@@ -23,7 +23,11 @@
           </div>
 
           <div class="col-md-3 col-sm-3">
-            <button type="button" class="btn btn-orange" data-toggle="modal" data-target="#messageHost">Message Host</button>
+          @if($user)
+            <button type="button" class="btn btn-orange" data-toggle="modal"  data-target="#messageHost">Message Host</button>
+          @else
+            <button type="button" class="btn btn-orange" data-toggle="modal"  data-target="#loginModal">Message Host</button>
+          @endif
           </div>
         </div>
         <hr/>
@@ -67,44 +71,47 @@
 
 </section>
 
-<!-- Modal -->
-<div id="messageHost" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-  
-  {!! Form::open(['route' => 'contact.store', 'class' => 'form']) !!}
+@if($user)
 
-  <div class="modal-content">
-    <div class="modal-header">
-      <button type="button" class="close" data-dismiss="modal">&times;</button>
-      <h4 class="modal-title">Message {!! $details->user->name !!}</h4>
-    </div>
+  <div id="messageHost" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+    
+    {!! Form::open(['route' => 'contact.store', 'class' => 'form']) !!}
 
-    @foreach($errors->all() as $error)
-      <li class="alert alert-danger">{{$error}}</li>
-    @endforeach
-  
-    <div class="modal-body">
-      {{ Form::hidden('listing_id', $details->id) }}
-      <div class="form-group">
-        {!! Form::label('Reply to email address?') !!}
-        {!! Form::text('email', $user->email, [ 'class'=>'form-control', 'placeholder'=>'Enter contact e-mail address']) !!}
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Message {!! $details->user->name !!}</h4>
       </div>
-      
-      <div class="form-group">
-        {!! Form::label('Message:')!!}
-        {!! Form::textarea('message', null, [ 'class'=>'form-control', 'placeholder'=>'Enter message.'])!!}
+
+      @foreach($errors->all() as $error)
+        <li class="alert alert-danger">{{$error}}</li>
+      @endforeach
+    
+      <div class="modal-body">
+        {{ Form::hidden('listing_id', $details->id) }}
+        <div class="form-group">
+          {!! Form::label('Reply to email address?') !!}
+          {!! Form::text('email', $user->email, [ 'class'=>'form-control', 'placeholder'=>'Enter contact e-mail address']) !!}
+        </div>
+        
+        <div class="form-group">
+          {!! Form::label('Message:')!!}
+          {!! Form::textarea('message', null, [ 'class'=>'form-control', 'placeholder'=>'Enter message.'])!!}
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        {!! Form::submit('Send email', ['class'=>'btn btn-orange form-control']) !!}
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
     </div>
+    {!! Form::close() !!}
 
-    <div class="modal-footer">
-      {!! Form::submit('Send email', ['class'=>'btn btn-orange form-control']) !!}
-      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
     </div>
   </div>
-  {!! Form::close() !!}
 
-  </div>
-</div>
+@endif
 
 
 @endsection
