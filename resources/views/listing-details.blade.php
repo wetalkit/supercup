@@ -18,7 +18,9 @@
             <div class="by">
               <label>by</label> 
               <div class="img"><img src="{!! $details->user->fb_avatar !!}"/></div>
-              <div class="name">{!! $details->user->name !!}</div>
+              <div class="name">
+                  <a href="{!! $details->user->fb_link !!}" target="_blank">{!! $details->user->name !!}</a>
+              </div>
             </div>
           </div>
 
@@ -54,8 +56,11 @@
             <h5>Number of beds:</h5>
             <p>{!! $details->no_beds !!}</p>
 
+             <h5>Number of people:</h5>
+            <p>{!! $details->no_people !!}</p>
+
             <h5>Available:</h5>
-            <p>From {!! $details->date_from !!} to {!! $details->date_to !!}</p>
+            <p>From <span>{!! $details->dateFromFormatted !!}</span> to <span>{!! $details->dateToFormatted !!}</span></p>
           </div>
         </div>
 

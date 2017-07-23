@@ -649,7 +649,9 @@ body.single-listing .row {
     padding-top: 2%;
     margin-top: 2%;
 }
-
+.details span {
+    color: #e25626;
+}
 /* MEDIA QUERIES / RESPONSIVENESS START */
 
 /* RESPONSIVE MENU START*/
