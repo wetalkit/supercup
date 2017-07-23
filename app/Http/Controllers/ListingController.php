@@ -22,28 +22,19 @@ class ListingController extends Controller
 
     public function index(Request $request)
     {
-        $from = $request->input('from');
-        $to = $request->input('to');
-        $guests = $request->input('guests');
-        $distance = $request->input('distance');
+        return redirect('/');
 
-        $start = date("Y-m-d",strtotime($from));
-        $end = date("Y-m-d",strtotime($to));
+       //  $from = $request->input('from');
+       //  $to = $request->input('to');
+       //  $guests = $request->input('guests');
+       //  $distance = $request->input('distance');
 
-        $listings = Listing::whereBetween('date_from', [$start, $end])->get()->where('distance_stadium','<=', $distance*1000)->where('no_people','==', $guests);
+       //  $start = date("Y-m-d",strtotime($from));
+       //  $end = date("Y-m-d",strtotime($to));
 
-        $listings = Listing::all();
+       //  $listings = Listing::whereBetween('date_from', [$start, $end])->get()->where('distance_stadium','<=', $distance*1000)->where('no_people','==', $guests);
 
-        // foreach ($listings as $listing) {
-        //     if ($listing->distance_stadium == 0.0){
-        //        $destination = Location::calculateWalkingDistance($stadiumLat, $listing->lat,$stadiumLon, $listing->lng);
-        //        $listing->distance_stadium =  $destination["distance"];
-        //        $listing->distance_stadium_time = $destination["time"];
-        //        $listing->save();
-        //     }
-        // }
-
-       return view('listings', compact('listings'));
+       // return view('listings', compact('listings'));
     }
 
     /**

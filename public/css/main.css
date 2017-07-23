@@ -92,7 +92,6 @@ video {
     border: 0;
     font-size: 100%;
     font: inherit;
-    vertical-align:super;
 }
 /* HTML5 display-role reset for older browsers */
 
@@ -338,6 +337,39 @@ section.hero {
     box-shadow: 0 1px 3px 0px rgba(0, 0, 0, 0.08) !important;
     padding: 25px;
 }
+.dropdown-holder input, 
+.dropdown-holder .bootstrap-select,
+.dropdown-holder .bootstrap-select button,
+.bootstrap-select.btn-group .dropdown-menu li,
+.bootstrap-select.btn-group .dropdown-menu li a:hover,
+.bootstrap-select.btn-group .dropdown-menu li a:focus,
+.bootstrap-select > .dropdown-toggle.bs-placeholder, 
+.bootstrap-select > .dropdown-toggle.bs-placeholder:hover, 
+.bootstrap-select > .dropdown-toggle.bs-placeholder:focus, 
+.bootstrap-select > .dropdown-toggle.bs-placeholder:active {
+    border: none !important;
+    box-shadow: none !important;
+    padding-left: 0px !important;
+    background: white;
+}
+.gallery-section {
+    width:100%;
+    height:250px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+    margin-top:0px;
+}
+.gallery-section img{
+    flex-shrink:0;
+    -webkit-flex-shrink: 0;
+    max-width:95%;
+    max-height:95%;
+}
+
+
+
 /* ACTIVE PLACES SECTION */
 section.active-places .row {
     padding: 50px 10px;
@@ -480,8 +512,6 @@ h5.faq-title {
 
 /* FOOTER START */
 footer {
-    background: #484848;
-    height: 70px;
     display: flex;
     align-items: center;
     align-content: center;
@@ -493,9 +523,18 @@ footer .row {
     align-content: center;
     justify-content: space-around;
 }
+footer ul.links-nav {
+    -webkit-column-count: 3;
+     -moz-column-count: 3;
+          column-count: 3;
+  -webkit-column-width: 25%;
+     -moz-column-width: 25%;
+          column-width: 25%;
+    -webkit-column-gap: 0.5em;
+       -moz-column-gap: 0.5em;
+            column-gap: 0.5em;
+}
 /* FOOTER END */
-
-
 
 
 /* SINGLE LISTINGS PAGE START */
