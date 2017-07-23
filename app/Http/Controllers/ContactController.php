@@ -38,7 +38,7 @@ class ContactController extends Controller
     public function store(ListingContactRequest $request)
     {
         $listing_id = $request->get('listing_id');
-        //$user_id = Auth::User()->id;
+        $user_id = Auth::User()->id;
         $user_id = 1;
         $listingContact = new ListingContact();
         $listingContact->sender_id = $user_id;

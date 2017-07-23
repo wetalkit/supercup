@@ -20,7 +20,7 @@
             'csrfToken' => csrf_token(),
         ]) !!};
     </script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
     @yield('additionalCss')
 
 </head>
@@ -29,7 +29,7 @@
         <nav class="nav-wrapper">
             <div class="logo">
                 <a href="{{ url('/') }}">
-                    <img src="images/logo.png" class="logo">
+                    <img src="/images/logo.png" class="logo">
                 </a>
             </div>
             <ul class="menu js-main-nav">
@@ -66,12 +66,14 @@
 
     @include('layouts.footer')
     
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap-select.js') }}"></script>
     <script src="{{ asset('js/moment.js') }}"></script>
     <script src="{{ asset('js/daterangepicker.js') }}"></script>
     <script src="{{ asset('js/main.js') }}"></script>
+
+    @yield('additionalJs')
 
 </body>
 </html>
