@@ -60,7 +60,8 @@ class ListingController extends Controller
         if (!$listing) {
             abort(404, 'Doomed');
         }
-        return view('listing-details', compact('details'));
+        
+        return view('listing-details', compact('listing'));
     }
 
     /**

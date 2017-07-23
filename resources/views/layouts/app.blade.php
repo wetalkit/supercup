@@ -33,13 +33,19 @@
                 </a>
             </div>
             <ul class="menu js-main-nav">
-                <li><a href="{{ route('listing.create') }}" class="become-a-host-btn">Become a Host</a></li>
-                @if (Auth::guest())
+                <li>
+                    @if($user)
+                        <a href="{{ route('listing.create') }}" class="become-a-host-btn">Become a Host</a>
+                    @else
+                        <a type="button" class="become-a-host-btn" data-toggle="modal"  data-target="#loginModal">Become a Host</a>
+                    @endif
+                </li>
+                @if (!$user)
                     <li><a href="{{ route('login') }}">Login</a></li>
                 @else
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                            {{ Auth::user()->name }} <span class="caret"></span>
+                            {{ $user->name }} <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu" role="menu">
                             <li>

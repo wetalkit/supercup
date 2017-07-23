@@ -21,8 +21,9 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+
         $listings = Listing::all();
 
         return view('home', compact('listings'));

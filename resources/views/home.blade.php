@@ -19,15 +19,15 @@
 
                    <div class="dropdown col-lg-3 col-sm-6">
                         <label>Beds</label>
-                        <select name="number_beds" class="selectpicker" title="Number of Beds">
+                        <select name="beds" class="selectpicker" title="Number of Beds">
                             <option>1</option>
                             <option>2</option>
                         </select>
                     </div>
 
                    <div class="dropdown col-lg-3 col-sm-6">
-                        <label>Distance</label>
-                        <select name="distance" class="selectpicker" title="Distance">
+                        <label>People</label>
+                        <select name="people" class="selectpicker" title="Number of People">
                             <option>< 1</option>
                             <option>< 2</option>
                         </select>
@@ -51,17 +51,19 @@
                 <strong>Active Places</strong>
             </h1>
 
+            @if(!$listings->count())
+            <p>There aren't any available listings at the moment. Please check back later.</p>
+            @endif 
+
             @foreach($listings as $listing)
 
               <a href="{{ route('listing.show', $listing->id) }}" class="link-item">
                   <div class="col-md-4 col-sm-6">
                     <div class="gallery-section">
-                      @foreach($listing->pictures as $image)
-                        <img src="{!! route('storage', $image->picture) !!}" alt={!! $image->title !!}>
-                      @endforeach
+                        <img src="{!! route('storage', $listing->defaultImageSrc) !!}" alt={!! $listing->title !!}>
                     </div>
                     <h3 class="listing-author">by {!! $listing->user->name !!}</h3>
-                    <span class="distance">{!! $listing->distance_stadium_time !!} mins distance</span>
+                    <span class="distance">{!! $listing->distanceFormatted !!}</span>
                     <span>-</span>
                     <span class="nr-of-beds">{!! $listing->no_beds !!} beds</span>
                   </div>

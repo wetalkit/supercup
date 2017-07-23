@@ -36,6 +36,14 @@ class Listing extends Model
     {
         return $this->hasMany(ListingContact::class);
     }
+    
+    public function getDefaultImageSrcAttribute()
+    {
+        if ($image = $this->pictures->first()) {
+            return $image->picture;
+        }
+        return false;
+    }
 
     /**
      * Return date_from formatted.
@@ -55,5 +63,20 @@ class Listing extends Model
     public function getDateToFormattedAttribute()
     {
         return Formatter::formatDate($this->attributes['date_to'], 'd M Y');
+    }
+
+    /**
+     * Distance
+     * @return string
+     */
+    public function getDistanceFormattedAttribute()
+    {
+        if ($this->attributes['distance_stadium_time'] < 1*60*60) {
+            return round($this->attributes['distance_stadium_time']/60).' mins walk';
+        } else {
+            return round($this->attributes['distance_stadium']/1000).' km';
+        }
+
+        return false;
     }
 }
