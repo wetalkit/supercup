@@ -136,10 +136,6 @@ class ListingController extends Controller
      */
     public function destroy(Listing $listing)
     {
-        foreach ($listing->pictures as $picture) {
-            unlink(storage_path().'/app/'.$picture->picture);
-            $picture->delete();
-        }
         $listing->delete();
         return redirect('/');
     }
