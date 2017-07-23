@@ -1,88 +1,113 @@
-<div class="col-md-6">
-    <div class="form-group">
-        {!! Form::label('address', 'What is your approximate location?') !!}
-        {!! Form::text('address', null, ['class' => 'form-control', 'id' => 'address']) !!}
-        {!! Form::input('hidden', 'lat') !!}
-        {!! Form::input('hidden', 'lng') !!}
-        @foreach($errors->get('address') as $error)
-        <p class="form-error">{{$error}}</p>
-        @endforeach
-    </div>
-    <div class="form-group">
-        {!! Form::label('no_people', 'How many guests can you accomodate?') !!}
-        {!! Form::input('number', 'no_people', null, ['class' => 'form-control', 'min' => 1, 'max' => 2]) !!}
-        @foreach($errors->get('no_people') as $error)
-        <p class="form-error">{{$error}}</p>
-        @endforeach
-    </div>
-    <div class="form-group">
-        {!! Form::label('no_beds', 'How many beds are available?') !!}
-        {!! Form::input('number', 'no_beds', null, ['class' => 'form-control', 'min' => 1, 'max' => 2]) !!}
-        @foreach($errors->get('no_beds') as $error)
-        <p class="form-error">{{$error}}</p>
-        @endforeach
-    </div>
-    <div class="form-group">
-        {!! Form::label('daterange', 'For which period are you offering your space?') !!}
-        {!! Form::input('text', 'daterange', null, ['class' => 'form-control']) !!}
-        @foreach($errors->get('daterange') as $error)
-        <p class="form-error">{{$error}}</p>
-        @endforeach
-    </div>
-    <div class="form-group">
-        {!! Form::label('pictures', 'Upload Photo') !!}
-        {!! Form::input('file', 'pictures[]', null, ['class' => 'form-control', 'multiple' => 'multiple']) !!}
-        @foreach($errors->get('pictures') as $error)
-        <p class="form-error">{{$error}}</p>
-        @endforeach
-        <div class="listing-images">
-            @if(@$listing->pictures)
-            @foreach($listing->pictures as $picture)
-                <div class="img-wrap">
-                    <div class="overlay"></div>
-                    <a href="#" class="delete-img" data-image="{{$picture->id}}"><i class="glyphicon glyphicon-trash"></i></a>
-                    <img src="{{route('storage', $picture->picture)}}" alt="Listing image">
-                </div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            {!! Form::label('title', 'Title') !!}
+            {!! Form::text('title', null, ['class' => 'form-control', 'placeholder' => 'How do you want your listing to appear in search?']) !!}
+            @foreach($errors->get('title') as $error)
+            <p class="form-error">{{$error}}</p>
             @endforeach
-            @endif
         </div>
-        {!! Form::input('hidden', 'imgs_delete') !!}
+        <div class="form-group">
+            {!! Form::label('description', 'Summary') !!}
+            {!! Form::textarea('description', null, ['class' => 'form-control', 'placeholder' => 'Brief overview of your place.', 'rows' => 8]) !!}
+            @foreach($errors->get('description') as $error)
+            <p class="form-error">{{$error}}</p>
+            @endforeach
+        </div>
+        <div class="form-group">
+            {!! Form::label('pictures', 'Upload Photo') !!}
+            {!! Form::input('file', 'pictures[]', null, ['class' => 'form-control', 'multiple' => 'multiple', 'required' => @$listing->id ? false : true]) !!}
+            @foreach($errors->get('pictures') as $error)
+            <p class="form-error">{{$error}}</p>
+            @endforeach
+            <div class="listing-images">
+                @if(@$listing->pictures)
+                @foreach($listing->pictures as $picture)
+                    <div class="img-wrap">
+                        <div class="overlay"></div>
+                        <a href="#" class="delete-img" data-image="{{$picture->id}}"><i class="glyphicon glyphicon-trash"></i></a>
+                        <img src="{{route('storage', $picture->picture)}}" alt="Listing image">
+                    </div>
+                @endforeach
+                @endif
+            </div>
+            {!! Form::input('hidden', 'imgs_delete') !!}
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            {!! Form::label('address', 'What is your approximate location?') !!}
+            {!! Form::text('address', null, ['class' => 'form-control', 'id' => 'address', 'required' => true]) !!}
+            {!! Form::input('hidden', 'lat') !!}
+            {!! Form::input('hidden', 'lng') !!}
+            @foreach($errors->get('address') as $error)
+            <p class="form-error">{{$error}}</p>
+            @endforeach
+        </div>
+        <div class="form-group">
+            {!! Form::label('daterange', 'For which period are you offering your space?') !!}
+            {!! Form::input('text', 'daterange', null, ['class' => 'form-control', 'required' => true]) !!}
+            @foreach($errors->get('daterange') as $error)
+            <p class="form-error">{{$error}}</p>
+            @endforeach
+        </div>
+        <div class="form-group dropdown-holder transparent">
+            <div>
+                {!! Form::label('no_people', 'How many guests can you accomodate?') !!}
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <p>Guests<br/>
+                    <span class="small">Max 2 guests</span>
+                </p>
+            </div>
+            <div class="col-md-2 col-sm-6">
+            {!! Form::select('no_people', [1,2], null, ['class' => 'selectpicker', 'required' => true]) !!}
+            </div>
+            @foreach($errors->get('no_people') as $error)
+            <p class="form-error">{{$error}}</p>
+            @endforeach
+        </div>
+        <div class="form-group dropdown-holder transparent">
+            <div>
+                {!! Form::label('no_beds', 'How many beds are available?') !!}
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <p>Beds<br/>
+                    <span class="small">Max 2 guests</span>
+                </p>
+            </div>
+            <div class="col-md-2 col-sm-6">
+            {!! Form::select('no_beds', [1,2], null, ['class' => 'selectpicker', 'required' => true]) !!}
+            </div>
+            @foreach($errors->get('no_beds') as $error)
+            <p class="form-error">{{$error}}</p>
+            @endforeach
+        </div>
     </div>
 </div>
-<div class="col-md-6">
-    <div class="form-group">
-        {!! Form::label('title', 'Title') !!}
-        {!! Form::text('title', null, ['class' => 'form-control']) !!}
-        @foreach($errors->get('title') as $error)
-        <p class="form-error">{{$error}}</p>
-        @endforeach
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            {!! Form::label('contact_email', 'Contact email') !!}
+            <p class="small">Please change this with your prefered email address for contact.</p>
+            {!! Form::input('email', 'contact_email', Auth::user()->email, ['class' => 'form-control']) !!}
+            @foreach($errors->get('contact_email') as $error)
+            <p class="form-error">{{$error}}</p>
+            @endforeach
+        </div>
     </div>
-    <div class="form-group">
-        {!! Form::label('description', 'Summary') !!}
-        {!! Form::textarea('description', null, ['class' => 'form-control', 'placeholder' => 'Brief overview of your place.', 'rows' => 8]) !!}
-        @foreach($errors->get('description') as $error)
-        <p class="form-error">{{$error}}</p>
-        @endforeach
-    </div>
-    <div class="form-group">
-        {!! Form::label('contact_email', 'Contact email') !!}
-        {!! Form::input('email', 'contact_email', Auth::user()->email, ['class' => 'form-control']) !!}
-        @foreach($errors->get('contact_email') as $error)
-        <p class="form-error">{{$error}}</p>
-        @endforeach
-    </div>
-</div>
-<div class="col-md-12">
-    <div class="form-group">
-        {!! Form::checkbox('terms_accepted', 1, @$listing->terms_accepted == '1', ['id' => 'terms_accepted']) !!}
-        {!! Form::label('terms_accepted', 'I accept the terms and conditions') !!}
-        @foreach($errors->get('terms_accepted') as $error)
-        <p class="form-error">{{$error}}</p>
-        @endforeach
-    </div>
-    <div class="form-group">
-        <div class="text-center">
-            {!! Form::submit('Submit', ['class' => 'btn btn-primary']) !!}
+    <div class="col-md-12">
+        <div class="form-group">
+            {!! Form::checkbox('terms_accepted', 1, @$listing->terms_accepted == '1', ['id' => 'terms_accepted']) !!}
+            {!! Form::label('terms_accepted', 'I accept the terms and conditions') !!}
+            @foreach($errors->get('terms_accepted') as $error)
+            <p class="form-error">{{$error}}</p>
+            @endforeach
+        </div>
+        <div class="form-group">
+            <div class="text-center">
+                {!! Form::submit('Submit', ['class' => 'btn btn-orange']) !!}
+            </div>
         </div>
     </div>
 </div>

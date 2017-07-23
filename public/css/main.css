@@ -111,7 +111,7 @@ section {
 
 body {
     line-height: 1;
-    font-family: 'Poppins', sans-serif !important;
+    font-family: 'Lato', sans-serif !important;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
@@ -296,6 +296,7 @@ h1 {
     display: block;
     margin-bottom: 25px;
     color: #e25626;
+    font-weight: 300;
 }
 
 h1.title-heading {
@@ -306,10 +307,11 @@ h1.title-heading {
 }
 
 h2 {
-    font-size: 23px;
-    line-height: 28px;
+    font-size: 20px;
+    line-height: 30px;
     color: white;
     margin-bottom: 35px;
+    font-weight: 300;
 }
 
 section.hero {
@@ -335,11 +337,11 @@ section.hero {
     border: 1px solid #e25626;
 }
 
-.dropdown-holder div {
+.dropdown-holder:not(.transparent) div {
     margin: 7.5px 0;
 }
 
-.dropdown-holder {
+.dropdown-holder:not(.transparent) {
     border-radius: 4px !important;
     border: 1px solid #DBDBDB !important;
     box-shadow: 0 1px 3px 0px rgba(0, 0, 0, 0.08) !important;
@@ -363,7 +365,7 @@ section.hero {
     box-shadow: none !important;
     padding-left: 0px !important;
     background: white;
-
+    max-width: 100%;
 }
 
 .bootstrap-select > .dropdown-toggle.bs-placeholder:focus, 
@@ -392,12 +394,23 @@ section.hero {
     max-width:95%;
     max-height:95%;
 }
+
+.small {
+    font-size: 12px;
+}
+
 .form-error {
     font-size: 12px;
     color: red;
     line-height: 15px;
     margin: 10px 0 0 0;
 }
+
+.listingform h1 {
+    font-size: 30px;
+    margin: 50px 0 30px;
+}
+
 
 .listingform .form-group {
      margin-right: 0; 
@@ -473,10 +486,28 @@ a.become-a-host-btn, .btn-orange {
     color: white;
 }
 
-a.become-a-host-btn:hover, .btn-orange:hover {
+.btn-orange-inverse {
+    background-color: transparent;
+    border: 1px solid #e25626;
+    color: #e25626;
+}
+
+a.become-a-host-btn:hover, .btn-orange:hover, .btn-orange-inverse:hover {
      background: #ce4719;
      color: white;
      text-decoration: none;
+}
+
+.close-listing {
+    font-size: 25px;
+}
+
+.close-listing i {
+    top:5px;
+}
+
+.form-group label {
+    margin: 20px 0;
 }
 
 a.link-item {
