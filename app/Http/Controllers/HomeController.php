@@ -38,4 +38,24 @@ class HomeController extends Controller
     {
         return view('faq');
     }
+
+    /**
+     * About page
+     * 
+     * @return view
+     */
+    public function about()
+    {
+        return view('about');
+    }
+
+    /**
+     * Privacy page
+     * 
+     * @return view
+     */
+    public function privacy()
+    {
+        return view('privacy');
+    }
 }
