@@ -100,6 +100,7 @@ class ListingController extends Controller
         if($request->pictures) {
             $this->uploadPictures($request, $listing);
         }
+        $request->session()->flash('success', 'Your listing was successfully updated.');
         return redirect()->route('listing.edit', $listing->id);
     }
 
