@@ -45,7 +45,7 @@
             <p>{!! $listing->description !!}</p>
 
             <h5>Distance from stadium:</h5>
-            <p>{!! $listing->distance_stadium !!}</p>
+            <p>{!! $listing->distanceFormatted !!}</p>
 
             <h5>Number of beds:</h5>
             <p>{!! $listing->no_beds !!}</p>
