@@ -26,7 +26,7 @@ class SocialAuthController extends Controller
                 'fb_token' => object_get($providerUser, 'token'),
                 'verified' => array_get(object_get($providerUser, 'user'),'verified'),
                 'gender' => array_get(object_get($providerUser, 'user'),'gender'),
-            ])->first();
+            ]);
         }
 
         auth()->login($user);
