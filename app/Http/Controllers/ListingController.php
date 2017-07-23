@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
-
 use App\User;
 use App\Http\Requests\ListingRequest;
 use App\Listing;
@@ -15,35 +13,13 @@ use App\Helpers\Location;
 class ListingController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Create a new controller instance.
      *
-     * @return \Illuminate\Http\Response
+     * @return void
      */
-
-    public function index(Request $request)
+    public function __construct()
     {
-        $from = $request->input('from');
-        $to = $request->input('to');
-        $guests = $request->input('guests');
-        $distance = $request->input('distance');
-
-        $start = date("Y-m-d",strtotime($from));
-        $end = date("Y-m-d",strtotime($to));
-
-        $listings = Listing::whereBetween('date_from', [$start, $end])->get()->where('distance_stadium','<=', $distance*1000)->where('no_people','==', $guests);
-
-        $listings = Listing::all();
-
-        // foreach ($listings as $listing) {
-        //     if ($listing->distance_stadium == 0.0){
-        //        $destination = Location::calculateWalkingDistance($stadiumLat, $listing->lat,$stadiumLon, $listing->lng);
-        //        $listing->distance_stadium =  $destination["distance"];
-        //        $listing->distance_stadium_time = $destination["time"];
-        //        $listing->save();
-        //     }
-        // }
-
-       return view('listings', compact('listings'));
+        $this->middleware('auth')->except('show');;
     }
 
     /**
@@ -88,42 +64,9 @@ class ListingController extends Controller
      */
     public function show($id)
     {
-        $details = Listing::find($id);
-        $user = User::find($details->user_id);
-        return view('listing-details', compact('details', 'user'));
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        if (!$details = Listing::find($id)) {
+            abort(404, 'Doomed');
+        }
+        return view('listing-details', compact('details'));
     }
 }

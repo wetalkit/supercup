@@ -30,7 +30,8 @@ class SocialAuthController extends Controller
         }
 
         auth()->login($user);
-        return redirect()->to('/book');
+
+        return redirect()->back();
     }
 
     public function logout()

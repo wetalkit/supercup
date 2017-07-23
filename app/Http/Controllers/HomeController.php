@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Listing;
 
 class HomeController extends Controller
 {
@@ -22,6 +23,18 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $listings = Listing::all();
+
+        return view('home', compact('listings'));
+    }
+
+    /**
+     * Faq page
+     * 
+     * @return view
+     */
+    public function faq()
+    {
+        return view('faq');
     }
 }

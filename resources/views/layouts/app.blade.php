@@ -20,7 +20,7 @@
             'csrfToken' => csrf_token(),
         ]) !!};
     </script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
     @yield('additionalCss')
 
 </head>
@@ -28,7 +28,9 @@
     <header>
         <nav class="nav-wrapper">
             <div class="logo">
-                <img src="images/logo.png" class="logo">
+                <a href="{{ url('/') }}">
+                    <img src="/images/logo.png" class="logo">
+                </a>
             </div>
             <ul class="menu js-main-nav">
                 <li><a href="{{ route('listing.create') }}" class="become-a-host-btn">Become a Host</a></li>
@@ -62,12 +64,18 @@
 
     @yield('content')
 
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    @include('layouts.footer')
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap-select.js') }}"></script>
     <script src="{{ asset('js/moment.js') }}"></script>
     <script src="{{ asset('js/daterangepicker.js') }}"></script>
     <script src="{{ asset('js/main.js') }}"></script>
+
+    @yield('additionalJs')
+
+    @include('modals.signup')
 
 </body>
 </html>

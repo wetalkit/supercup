@@ -1,62 +1,152 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">By {{$user->name}}  </div>
-                    <div class="your-class">
-                       @foreach($details->pictures as $picture) 
-                        <img src="{{route('storage', $picture->picture)}}"/>
-                        @endforeach
-                    </div>
-                {{-- <img src="https://www.imgacademy.com/themes/custom/imgacademy/images/helpbox-contact.png"/> --}}
-                <div class="panel-body">
-                    {{$details->description}}<br/>
-                    Distance from stadium: {{$details->distance_stadium}} km<br/>
-                    Number of beds: {{$details->no_beds}}<br/>
-                    From - To<br/>
-                    {{$details->date_from}} - {{$details->date_to}}
-                </div>
+
+<section class="listing">
+    <div class="container">
+      
+      <div class="back">
+          <a href="/"><label><i class="glyphicon glyphicon-circle-arrow-left"></i> Back</label></a>
+      </div>
+      <hr/>
+
+      <div class="listing-details clearfix">
+
+        <div class="heading clearfix">
+          <div class="col-md-9 col-sm-9">
+            <div class="title"><h2>{!! $details->title !!}</h2></div>
+            <div class="by">
+              <label>by</label> 
+              <div class="img"><img src="{!! $details->user->fb_avatar !!}"/></div>
+              <div class="name">
+                  <a href="{!! $details->user->fb_link !!}" target="_blank">{!! $details->user->name !!}</a>
+              </div>
             </div>
+          </div>
 
+          <div class="col-md-3 col-sm-3">
+          @if($user)
+            <button type="button" class="btn btn-orange" data-toggle="modal"  data-target="#messageHost">Message Host</button>
+          @else
+            <button type="button" class="btn btn-orange" data-toggle="modal"  data-target="#loginModal">Message Host</button>
+          @endif
+          </div>
         </div>
-    </div>
-</div>
-<div id="mapWrapper" style="height:500px; width:1000px; margin-left: 420px;">
-<div id="map" style="height:100%"></div>
-</div>
+        <hr/>
 
+          
+        <div class="col-md-6 col-sm-6">
 
-    <h1 style="text-align: center;">CONTACT HOST</h1>
-    <div style="margin-left: 430px; width:1000px"> 
-        {!! Form::open(array('route' => 'contact.store', 'class' => 'form', 'files'=>true))!!}
-        {{ Form::hidden('listing_id', $details->id) }}
-         <div class="form-group">
-                {!! Form::label('E-mail Address') !!}
-                {!! Form::text('email', $user->email, 
-                    array(
-                        'class'=>'form-control', 
-                        'placeholder'=>'Enter contact e-mail address')) !!}
-        </div>
-       <div class="form-group">
-            {!! Form::label('Message:')!!}
-            {!! Form::textarea('message', null, 
-                array( 
-                    'class'=>'form-control', 
-                    'placeholder'=>'Enter message.'))!!}
-        </div>
-        <div class="form-group">
-                {!! Form::submit('Send email', 
-                  array('class'=>'btn btn-primary form-control')) !!}
-        </div>
-         {!! Form::close() !!}
-            @foreach($errors->all() as $error)
-                <li class="alert alert-danger">{{$error}}</li>
+          <div class="images-slider">
+            @foreach($details->pictures as $picture) 
+              <img src="{{route('storage', $picture->picture)}}" alt="{!! $details->title !!}"/>
             @endforeach
+          </div>
+
+        </div>
+
+        <div class="col-md-6 col-sm-6">
+          <div class="details">
+            <h5>Description:</h5>
+            <p>{!! $details->description !!}</p>
+
+            <h5>Distance from stadium:</h5>
+            <p>{!! $details->distance_stadium !!}</p>
+
+            <h5>Number of beds:</h5>
+            <p>{!! $details->no_beds !!}</p>
+
+             <h5>Number of people:</h5>
+            <p>{!! $details->no_people !!}</p>
+
+            <h5>Available:</h5>
+            <p>From <span>{!! $details->dateFromFormatted !!}</span> to <span>{!! $details->dateToFormatted !!}</span></p>
+          </div>
+        </div>
+
+        <hr/>
+
+      </div>
+
+      <div style="height:400px; width:100%" class="clearfix">
+        <div id="map" style="height:100%"></div>
+      </div>
+
+</div>
+
+</section>
+
+@if($user)
+
+  <div id="messageHost" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+    
+    {!! Form::open(['route' => 'contact.store', 'class' => 'form']) !!}
+
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Message {!! $details->user->name !!}</h4>
+      </div>
+
+      @foreach($errors->all() as $error)
+        <li class="alert alert-danger">{{$error}}</li>
+      @endforeach
+    
+      <div class="modal-body">
+        {{ Form::hidden('listing_id', $details->id) }}
+        <div class="form-group">
+          {!! Form::label('Reply to email address?') !!}
+          {!! Form::text('email', $user->email, [ 'class'=>'form-control', 'placeholder'=>'Enter contact e-mail address']) !!}
+        </div>
+        
+        <div class="form-group">
+          {!! Form::label('Message:')!!}
+          {!! Form::textarea('message', null, [ 'class'=>'form-control', 'placeholder'=>'Enter message.'])!!}
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        {!! Form::submit('Send email', ['class'=>'btn btn-orange form-control']) !!}
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
     </div>
-    <script>
+    {!! Form::close() !!}
+
+    </div>
+  </div>
+
+@endif
+
+
+@endsection
+
+  @section('additionalCss')
+  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css"/>
+  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick-theme.css"/>
+  @endsection
+  @section('additionalJs')
+  <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+  <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>
+  
+
+  <script>
+
+  $(document).ready(function(){
+
+    $('.images-slider').slick({
+        dots: true,
+        infinite: true,
+        speed: 300,
+        slidesToShow: 1,
+        autoplay: false,
+        arrows: true,
+        prevArrow: '<div class="slick-prev"><i class="fa fa-chevron-left"></i></div>',
+        nextArrow: '<div class="slick-next"><i class="fa fa-chevron-right"></i></div>'
+      });
+    });
+
+
       // This example creates circles on the map, representing populations in North
       // America.
 
@@ -94,31 +184,6 @@
       
     </script>
 
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key={{env('API_KEY')}}&callback=initMap">
-    </script>
-
-
-  <script type="text/javascript">
-    $(document).ready(function(){
-      $('.your-class').slick({
-        dots: false,
-        infinite: true,
-        speed: 300,
-        slidesToShow: 1,
-        autoplay: true,
-        prevArrow: '<div class="slick-prev"><i class="fa fa-chevron-left"></i></div>',
-        nextArrow: '<div class="slick-next"><i class="fa fa-chevron-right"></i></div>'
-      });
-    });
-  </script>
-  @section('additionalCss')
-  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css"/>
-  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick-theme.css"/>
-  @endsection
-  @section('additionalJs')
-  <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-  <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>
-  @endsection
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key={{env('GMAPS_API_KEY')}}&callback=initMap"></script>
   
 @endsection

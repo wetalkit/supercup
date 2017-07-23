@@ -12,6 +12,8 @@
 */
 
 Route::get('/', 'HomeController@index');
+Route::get('/faq', 'HomeController@faq');
+
 Route::get('/login', 'SocialAuthController@redirect')->name('login');
 Route::get('/callback', 'SocialAuthController@callback');
 Route::post('/logout', 'SocialAuthController@logout')->name('logout');
@@ -21,7 +23,6 @@ Route::group(['prefix' => 'book', 'middleware' => 'auth'], function (){
         return "Here comes the book view";
     });
 });
-
 
 Route::resource('listing', 'ListingController', ['names' => [ 
     'create' => 'listing.create',
