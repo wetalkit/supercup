@@ -28,14 +28,14 @@ class Location
         $response_a = json_decode($response, true);
 
         try {
-            if (isset($response_a['rows'][0]['elements'][0]['distance']['value'])) {
+            if (isset($response_a['rows'][0]['elements'][0]['distance'])) {
                 $distance = $response_a['rows'][0]['elements'][0]['distance']['value'];
             }
 
-            if ($response_a['rows'][0]['elements'][0]['duration']['value']) {
+            if ($response_a['rows'][0]['elements'][0]['duration']) {
                 $time = $response_a['rows'][0]['elements'][0]['duration']['value'];
             }
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             
         }
         
