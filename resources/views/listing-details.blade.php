@@ -21,9 +21,13 @@
 
           <div class="col-md-3 col-sm-3">
           @if($user)
-            <button type="button" class="btn btn-orange" data-toggle="modal"  data-target="#messageHost">Message Host</button>
+            @if($listing->status)
+            <span class="label label-success booked">Booked</span>
+            @else
+            <button type="button" class="btn btn-orange btn-orange-inverse pull-right" data-toggle="modal"  data-target="#messageHost">Message Host</button>
+            @endif
           @else
-            <button type="button" class="btn btn-orange" data-toggle="modal"  data-target="#loginModal">Message Host</button>
+            <button type="button" class="btn btn-orange btn-orange-inverse pull-right" data-toggle="modal"  data-target="#loginModal">Message Host</button>
           @endif
           </div>
         </div>
