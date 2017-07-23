@@ -6,9 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 use App\User;
 use App\ListingPictures;
 use App\Helpers\Formatter;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Listing extends Model
 {
+    use SoftDeletes;
+
     protected $table = 'listings';
     protected $guarded = ['id'];
 

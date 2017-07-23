@@ -46,7 +46,7 @@ class ListingController extends Controller
         $listing = Listing::create($data);
         $listing->user->update(['email' => $listing->contact_email]);
         $this->uploadPictures($request, $listing);
-        return redirect()->route('listing.edit', $listing->id);
+        return redirect()->route('listing.edit', [$listing->id, 'share' => 'y']);
     }
 
     /**
@@ -136,10 +136,6 @@ class ListingController extends Controller
      */
     public function destroy(Listing $listing)
     {
-        foreach ($listing->pictures as $picture) {
-            unlink(storage_path().'/app/'.$picture->picture);
-            $picture->delete();
-        }
         $listing->delete();
         return redirect('/');
     }
