@@ -28,8 +28,10 @@ class SendContactHostMessage implements ShouldQueue
     {
         $guest = $event->guest;
         $listing = $event->listing;
+        $messageContent = $event->message;
 
-        Mail::send('emails.contactHost', compact('guest', 'listing'), function ($message) use ($guest, $listing) {
+        Mail::send('emails.contactHost', compact('guest', 'listing', 'messageContent'), function ($message) use ($guest, $listing) 
+        {
             $message->to($listing->user->email, $listing->user->name);
             $message->replyTo($guest->email, $guest->name);
             $message->subject('A new request your free listing on '.config('app.name').'!');

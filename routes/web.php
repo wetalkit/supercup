@@ -17,12 +17,7 @@ Route::get('/faq', 'HomeController@faq');
 Route::get('/login', 'SocialAuthController@redirect')->name('login');
 Route::get('/callback', 'SocialAuthController@callback');
 Route::post('/logout', 'SocialAuthController@logout')->name('logout');
-
-Route::group(['prefix' => 'book', 'middleware' => 'auth'], function (){
-    Route::get('/', function (){
-        return "Here comes the book view";
-    });
-});
+Route::post('/contact/send-message', 'ContactController@fireMessage')->name('contact.fireMessage');
 
 Route::resource('listing', 'ListingController', ['names' => [ 
     'create' => 'listing.create',
@@ -30,12 +25,6 @@ Route::resource('listing', 'ListingController', ['names' => [
     'index' => 'listing.index'
 ]]);
 
-Route::resource('contact', 'ContactController', ['names' => [
-    'create' => 'contact.create',
-    'show' => 'contact.show',
-    'store' => 'contact.store',
-
-]]);
 
 Route::get('/storage/{path}', function($path) {
     return response()->file(storage_path().'/app/'.$path);

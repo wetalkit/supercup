@@ -4,11 +4,6 @@
 
 <section class="listing">
     <div class="container">
-      
-      <div class="back">
-          <a href="/"><label><i class="glyphicon glyphicon-circle-arrow-left"></i> Back</label></a>
-      </div>
-      <hr/>
 
       <div class="listing-details clearfix">
 
@@ -33,7 +28,6 @@
           </div>
         </div>
         <hr/>
-
           
         <div class="col-md-6 col-sm-6">
 
@@ -77,45 +71,42 @@
 </section>
 
 @if($user)
-
-  <div id="messageHost" class="modal fade" role="dialog">
-    <div class="modal-dialog">
+<div id="messageHost" class="modal fade" role="dialog">
+  <div class="modal-dialog">
     
-    {!! Form::open(['route' => 'contact.store', 'class' => 'form']) !!}
+  {!! Form::open(['route' => 'contact.fireMessage', 'method' => 'POST','class' => 'form', 'id'=>'contact-host']) !!}
 
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Message {!! $details->user->name !!}</h4>
-      </div>
-
-      @foreach($errors->all() as $error)
-        <li class="alert alert-danger">{{$error}}</li>
-      @endforeach
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal">&times;</button>
+      <h4 class="modal-title">Message {!! $details->user->name !!}</h4>
+    </div>
     
-      <div class="modal-body">
-        {{ Form::hidden('listing_id', $details->id) }}
-        <div class="form-group">
-          {!! Form::label('Reply to email address?') !!}
-          {!! Form::text('email', $user->email, [ 'class'=>'form-control', 'placeholder'=>'Enter contact e-mail address']) !!}
-        </div>
-        
-        <div class="form-group">
-          {!! Form::label('Message:')!!}
-          {!! Form::textarea('message', null, [ 'class'=>'form-control', 'placeholder'=>'Enter message.'])!!}
-        </div>
-      </div>
+    <div class="modal-body">
+      {{ Form::hidden('listing_id', $details->id) }}
 
-      <div class="modal-footer">
-        {!! Form::submit('Send email', ['class'=>'btn btn-orange form-control']) !!}
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      <div class="message-aler-holder"></div>
+
+      <div class="form-group">
+        {!! Form::label('Reply to email address?') !!}
+        {!! Form::text('email', $user->email, [ 'class'=>'form-control', 'placeholder'=>'Enter contact e-mail address']) !!}
+      </div>
+      
+      <div class="form-group">
+        {!! Form::label('Message:')!!}
+        {!! Form::textarea('message', null, [ 'class'=>'form-control', 'placeholder'=>'Enter message.'])!!}
       </div>
     </div>
-    {!! Form::close() !!}
 
+    <div class="modal-footer">
+      {!! Form::submit('Send email', ['class'=>'btn btn-orange form-control']) !!}
+      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
     </div>
   </div>
+  {!! Form::close() !!}
 
+  </div>
+</div>
 @endif
 
 
@@ -134,6 +125,38 @@
 
   $(document).ready(function(){
 
+    bootstrap_alert = function() {}
+    bootstrap_alert.warning = function(message) {
+        $('.message-aler-holder').html('<div class="alert alert-danger"><a class="close" data-dismiss="alert">×</a><span>'+message+'</span></div>')
+    }
+
+    $('#contact-host').submit(function(e) {
+
+        var url = $(this).attr('action');
+        var type = 'POST';
+
+        $.ajax({
+          type: type,
+          url: url,
+          dataType: 'json',
+         data: $(this).serialize(),
+        }).done(function(data) {
+            
+            $('#messageHost').modal('hide');
+            alert('Your message was sent successfully!');
+        
+        }).fail(function (response) {
+        
+            var data = response.responseJSON;
+            if(!data.response){
+              bootstrap_alert.warning(data.data.join('<br/>'));
+            }
+        
+        });
+        e.preventDefault(); // avoid to execute the actual submit of the form.
+    
+    });
+
     $('.images-slider').slick({
         dots: true,
         infinite: true,
@@ -146,42 +169,32 @@
       });
     });
 
+    var citymap = {
+      destination: {
+        center: {lat: {{$details->lat}}, lng: {{$details->lng}}},
+        population: 5
+      },
+    };
 
-      // This example creates circles on the map, representing populations in North
-      // America.
+    function initMap() {
+      var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 15,
+        center: {lat: {{$details->lat}}, lng: {{$details->lng}} },
+      });
 
-      // First, create an object containing LatLng and population for each city.
-      var citymap = {
-        destination: {
-          center: {lat: {{$details->lat}}, lng: {{$details->lng}}},
-          population: 5
-        },
-      };
-
-      function initMap() {
-        // Create the map.
-        var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 15,
-          center: {lat: {{$details->lat}}, lng: {{$details->lng}} },
+      for (var city in citymap) {
+        var cityCircle = new google.maps.Circle({
+          strokeColor: '#FF0000',
+          strokeOpacity: 0.8,
+          strokeWeight: 2,
+          fillColor: '#FF0000',
+          fillOpacity: 0.35,
+          map: map,
+          center: citymap[city].center,
+          radius: Math.sqrt(citymap[city].population) * 100
         });
-
-        // Construct the circle for each value in citymap.
-        // Note: We scale the area of the circle based on the population.
-        for (var city in citymap) {
-          // Add the circle for this city to the map.
-          var cityCircle = new google.maps.Circle({
-            strokeColor: '#FF0000',
-            strokeOpacity: 0.8,
-            strokeWeight: 2,
-            fillColor: '#FF0000',
-            fillOpacity: 0.35,
-            map: map,
-            center: citymap[city].center,
-            radius: Math.sqrt(citymap[city].population) * 100
-          });
         }
-      }
-      
+    }
     </script>
 
     <script async defer src="https://maps.googleapis.com/maps/api/js?key={{env('GMAPS_API_KEY')}}&callback=initMap"></script>

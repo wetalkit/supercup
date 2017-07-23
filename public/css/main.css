@@ -385,14 +385,13 @@ section.hero {
     overflow:hidden;
     margin-top:0px;
 }
+
 .gallery-section img{
     flex-shrink:0;
     -webkit-flex-shrink: 0;
     max-width:95%;
     max-height:95%;
 }
-
-
 
 /* ACTIVE PLACES SECTION */
 section.active-places .row {

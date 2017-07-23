@@ -1,5 +1,4 @@
 @if(!$user)
-
 <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModallabel" aria-hidden="true">
 	<div class="modal-dialog">
     	<div class="modal-content">
@@ -20,5 +19,4 @@
     	</div>
   	</div>
 </div>
-
 @endif
