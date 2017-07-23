@@ -19,15 +19,15 @@
 
                    <div class="dropdown col-lg-3 col-sm-6">
                         <label>Beds</label>
-                        <select name="number_beds" class="selectpicker" title="Number of Beds">
+                        <select name="beds" class="selectpicker" title="Number of Beds">
                             <option>1</option>
                             <option>2</option>
                         </select>
                     </div>
 
                    <div class="dropdown col-lg-3 col-sm-6">
-                        <label>Distance</label>
-                        <select name="distance" class="selectpicker" title="Distance">
+                        <label>People</label>
+                        <select name="people" class="selectpicker" title="Number of People">
                             <option>< 1</option>
                             <option>< 2</option>
                         </select>
@@ -65,7 +65,7 @@
                       @endforeach
                     </div>
                     <h3 class="listing-author">by {!! $listing->user->name !!}</h3>
-                    <span class="distance">{!! $listing->distance_stadium_time !!} mins distance</span>
+                    <span class="distance">{!! $listing->distanceFormatted !!}</span>
                     <span>-</span>
                     <span class="nr-of-beds">{!! $listing->no_beds !!} beds</span>
                   </div>
