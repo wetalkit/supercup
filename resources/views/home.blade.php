@@ -60,9 +60,7 @@
               <a href="{{ route('listing.show', $listing->id) }}" class="link-item">
                   <div class="col-md-4 col-sm-6">
                     <div class="gallery-section">
-                      @foreach($listing->pictures as $image)
-                        <img src="{!! route('storage', $image->picture) !!}" alt={!! $image->title !!}>
-                      @endforeach
+                        <img src="{!! route('storage', $listing->defaultImageSrc) !!}" alt={!! $listing->title !!}>
                     </div>
                     <h3 class="listing-author">by {!! $listing->user->name !!}</h3>
                     <span class="distance">{!! $listing->distanceFormatted !!}</span>
