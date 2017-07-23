@@ -9,12 +9,12 @@
 
         <div class="heading clearfix">
           <div class="col-md-9 col-sm-9">
-            <div class="title"><h2>{!! $details->title !!}</h2></div>
+            <div class="title"><h2>{!! $listing->title !!}</h2></div>
             <div class="by">
               <label>by</label> 
-              <div class="img"><img src="{!! $details->user->fb_avatar !!}"/></div>
+              <div class="img"><img src="{!! $listing->user->fb_avatar !!}"/></div>
               <div class="name">
-                  <a href="{!! $details->user->fb_link !!}" target="_blank">{!! $details->user->name !!}</a>
+                  <a href="{!! $listing->user->fb_link !!}" target="_blank">{!! $listing->user->name !!}</a>
               </div>
             </div>
           </div>
@@ -32,8 +32,8 @@
         <div class="col-md-6 col-sm-6">
 
           <div class="images-slider">
-            @foreach($details->pictures as $picture) 
-              <img src="{{route('storage', $picture->picture)}}" alt="{!! $details->title !!}"/>
+            @foreach($listing->pictures as $picture) 
+              <img src="{{route('storage', $picture->picture)}}" alt="{!! $listing->title !!}"/>
             @endforeach
           </div>
 
@@ -42,19 +42,19 @@
         <div class="col-md-6 col-sm-6">
           <div class="details">
             <h5>Description:</h5>
-            <p>{!! $details->description !!}</p>
+            <p>{!! $listing->description !!}</p>
 
             <h5>Distance from stadium:</h5>
-            <p>{!! $details->distance_stadium !!}</p>
+            <p>{!! $listing->distance_stadium !!}</p>
 
             <h5>Number of beds:</h5>
-            <p>{!! $details->no_beds !!}</p>
+            <p>{!! $listing->no_beds !!}</p>
 
              <h5>Number of people:</h5>
-            <p>{!! $details->no_people !!}</p>
+            <p>{!! $listing->no_people !!}</p>
 
             <h5>Available:</h5>
-            <p>From <span>{!! $details->dateFromFormatted !!}</span> to <span>{!! $details->dateToFormatted !!}</span></p>
+            <p>From <span>{!! $listing->dateFromFormatted !!}</span> to <span>{!! $listing->dateToFormatted !!}</span></p>
           </div>
         </div>
 
@@ -79,11 +79,11 @@
   <div class="modal-content">
     <div class="modal-header">
       <button type="button" class="close" data-dismiss="modal">&times;</button>
-      <h4 class="modal-title">Message {!! $details->user->name !!}</h4>
+      <h4 class="modal-title">Message {!! $listing->user->name !!}</h4>
     </div>
     
     <div class="modal-body">
-      {{ Form::hidden('listing_id', $details->id) }}
+      {{ Form::hidden('listing_id', $listing->id) }}
 
       <div class="message-aler-holder"></div>
 
@@ -171,7 +171,7 @@
 
     var citymap = {
       destination: {
-        center: {lat: {{$details->lat}}, lng: {{$details->lng}}},
+        center: {lat: {{$listing->lat}}, lng: {{$listing->lng}}},
         population: 5
       },
     };
@@ -179,7 +179,7 @@
     function initMap() {
       var map = new google.maps.Map(document.getElementById('map'), {
         zoom: 15,
-        center: {lat: {{$details->lat}}, lng: {{$details->lng}} },
+        center: {lat: {{$listing->lat}}, lng: {{$listing->lng}} },
       });
 
       for (var city in citymap) {
