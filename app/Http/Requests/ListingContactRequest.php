@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Contracts\Validation\Validator;
 
 class ListingContactRequest extends FormRequest
 {
@@ -26,6 +27,21 @@ class ListingContactRequest extends FormRequest
         return [
             'email' => 'required|email',
             'message' => 'required',
+        ];
+    }
+
+    /**
+     * Format Errors
+     * 
+     * @param  Validator $validator [description]
+     * 
+     * @return [type]               [description]
+     */
+    public function formatErrors(Validator $validator)
+    {
+        return [
+            'response' => false,
+            'data' => $validator->errors()->all()
         ];
     }
 }

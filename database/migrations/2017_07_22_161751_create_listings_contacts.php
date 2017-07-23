@@ -13,7 +13,7 @@ class CreateListingsContacts extends Migration
      */
     public function up()
     {
-            Schema::create('listing_contacts', function (Blueprint $table) {
+        Schema::create('listing_contacts', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('sender_id')->unsigned();
             $table->foreign('sender_id')->references('id')->on('users');
@@ -30,6 +30,6 @@ class CreateListingsContacts extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('listing_contacts');
     }
 }

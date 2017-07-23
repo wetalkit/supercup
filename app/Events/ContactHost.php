@@ -29,14 +29,21 @@ class ContactHost
     public $listing;
 
     /**
+     * Message
+     * @var string
+     */
+    public $message;
+
+    /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct(User $guest, Listing $listing)
+    public function __construct(User $guest, Listing $listing, $message = '')
     {
         $this->guest = $guest;
         $this->listing = $listing;
+        $this->message = $message;
     }
 
     /**

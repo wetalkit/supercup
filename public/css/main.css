@@ -346,21 +346,39 @@ section.hero {
     padding: 25px;
 }
 
+<<<<<<< HEAD
+.daterangepicker td.active {
+    background-color: #e25626;
+}
+
+=======
+>>>>>>> master
 .dropdown-holder input, 
 .dropdown-holder .bootstrap-select,
 .dropdown-holder .bootstrap-select button,
 .bootstrap-select.btn-group .dropdown-menu li,
-.bootstrap-select.btn-group .dropdown-menu li a:hover,
-.bootstrap-select.btn-group .dropdown-menu li a:focus,
 .bootstrap-select > .dropdown-toggle.bs-placeholder, 
 .bootstrap-select > .dropdown-toggle.bs-placeholder:hover, 
-.bootstrap-select > .dropdown-toggle.bs-placeholder:focus, 
-.bootstrap-select > .dropdown-toggle.bs-placeholder:active {
+.bootstrap-select > .dropdown-toggle.bs-placeholder:active,
+.open>.dropdown-toggle.btn-default,
+.open>.dropdown-toggle.btn-default:hover {
     border: none !important;
     box-shadow: none !important;
     padding-left: 0px !important;
     background: white;
+
 }
+
+.bootstrap-select > .dropdown-toggle.bs-placeholder:focus, 
+.bootstrap-select.btn-group .dropdown-menu li a:focus,
+.bootstrap-select.btn-group .dropdown-menu li:focus,
+.dropdown-holder .bootstrap-select button:focus {
+    outline:0px !important;
+    -webkit-appearance:none;
+    background: white;
+    border: none !important;
+}
+
 .gallery-section {
     width:100%;
     height:250px;
@@ -370,13 +388,13 @@ section.hero {
     overflow:hidden;
     margin-top:0px;
 }
+
 .gallery-section img{
     flex-shrink:0;
     -webkit-flex-shrink: 0;
     max-width:95%;
     max-height:95%;
 }
-
 .form-error {
     font-size: 12px;
     color: red;
@@ -430,7 +448,6 @@ section.hero {
 .listing-images .img-wrap img {
     max-width: 150px;
 }
-
 /* ACTIVE PLACES SECTION */
 section.active-places .row {
     padding: 50px 10px;
@@ -641,7 +658,11 @@ section.similar-places h2 {
 section.similar-places {
     margin: 30px 0;
 }
-
+.dropdown-menu>li>a:hover {
+    background-color: transparent;
+    background-image: none;
+    color: #ce4719;
+}
 body.single-listing .row {
     margin: 30px 0;
 }
@@ -704,6 +725,9 @@ body.single-listing .row {
 }
 .details span {
     color: #e25626;
+}
+.modal-footer .btn-orange {
+    line-height: 14px;
 }
 /* MEDIA QUERIES / RESPONSIVENESS START */
 
