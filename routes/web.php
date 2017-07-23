@@ -12,6 +12,8 @@
 */
 
 Route::get('/', 'HomeController@index');
+Route::get('/faq', 'HomeController@faq');
+
 Route::get('/login', 'SocialAuthController@redirect')->name('login');
 Route::get('/callback', 'SocialAuthController@callback');
 Route::post('/logout', 'SocialAuthController@logout')->name('logout');
