@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\User;
 use App\Http\Requests\ListingRequest;
 use App\Http\Requests\BookRequest;
+use Auth;
+use App\User;
 use App\Listing;
 use App\ListingPictures;
-use Auth;
 use App\Helpers\Location;
 use Carbon\Carbon;
 
@@ -44,6 +44,7 @@ class ListingController extends Controller
     {
         $data = $this->prepareListing($request);
         $listing = Listing::create($data);
+        $listing->user->update(['email' => $listing->contact_email]);
         $this->uploadPictures($request, $listing);
         return redirect()->route('listing.edit', $listing->id);
     }
@@ -88,6 +89,7 @@ class ListingController extends Controller
     {
         $data = $this->prepareListing($request);
         $listing->update($data);
+        $listing->user->update(['email' => $listing->contact_email]);
         $imgs_delete = $request->imgs_delete ? explode(',',trim($request->imgs_delete, ',')) : [];
         foreach ((array)$imgs_delete as $image) {
             $listingPicture = ListingPictures::find($image);
@@ -97,7 +99,7 @@ class ListingController extends Controller
         if($request->pictures) {
             $this->uploadPictures($request, $listing);
         }
-        return redirect()->route('listing.edit', $id);
+        return redirect()->route('listing.edit', $listing->id);
     }
 
     private function prepareListing($request)

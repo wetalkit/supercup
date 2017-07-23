@@ -28,7 +28,7 @@ class ListingRequest extends FormRequest
             'title' => ['required'],
             'description' => ['required'],
             'address' => ['required'],
-            // 'pictures.*' => ['mimes:jpeg,jpg,png,bmp,gif,svg'],
+            'pictures.*' => ['mimes:jpeg,jpg,png,bmp,gif,svg'],
             'no_people' => ['required', 'min:1', 'max:2'],
             'no_beds' => ['required', 'min:1', 'max:2'],
             'daterange' => ['required'],
@@ -51,7 +51,7 @@ class ListingRequest extends FormRequest
     public function messages()
     {
         $messages['pictures.*.required'] = 'Please upload an image for the listing.';
-        $messages['pictures.*.mimes'] = 'Only jpeg,jpg,png,bmp,gif,svg formats are allowed for the listing images.';
+        $messages['pictures.*.mimes'] = 'The uploaded file must be an image.';
         
         return $messages;
     }
