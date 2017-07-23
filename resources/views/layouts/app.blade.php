@@ -75,5 +75,7 @@
 
     @yield('additionalJs')
 
+    @include('modals.signup')
+
 </body>
 </html>

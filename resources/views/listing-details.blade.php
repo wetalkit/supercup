@@ -18,12 +18,18 @@
             <div class="by">
               <label>by</label> 
               <div class="img"><img src="{!! $details->user->fb_avatar !!}"/></div>
-              <div class="name">{!! $details->user->name !!}</div>
+              <div class="name">
+                  <a href="{!! $details->user->fb_link !!}" target="_blank">{!! $details->user->name !!}</a>
+              </div>
             </div>
           </div>
 
           <div class="col-md-3 col-sm-3">
-            <button type="button" class="btn btn-orange" data-toggle="modal" data-target="#messageHost">Message Host</button>
+          @if($user)
+            <button type="button" class="btn btn-orange" data-toggle="modal"  data-target="#messageHost">Message Host</button>
+          @else
+            <button type="button" class="btn btn-orange" data-toggle="modal"  data-target="#loginModal">Message Host</button>
+          @endif
           </div>
         </div>
         <hr/>
@@ -50,8 +56,11 @@
             <h5>Number of beds:</h5>
             <p>{!! $details->no_beds !!}</p>
 
+             <h5>Number of people:</h5>
+            <p>{!! $details->no_people !!}</p>
+
             <h5>Available:</h5>
-            <p>From {!! $details->date_from !!} to {!! $details->date_to !!}</p>
+            <p>From <span>{!! $details->dateFromFormatted !!}</span> to <span>{!! $details->dateToFormatted !!}</span></p>
           </div>
         </div>
 
@@ -67,44 +76,47 @@
 
 </section>
 
-<!-- Modal -->
-<div id="messageHost" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-  
-  {!! Form::open(['route' => 'contact.store', 'class' => 'form']) !!}
+@if($user)
 
-  <div class="modal-content">
-    <div class="modal-header">
-      <button type="button" class="close" data-dismiss="modal">&times;</button>
-      <h4 class="modal-title">Message {!! $details->user->name !!}</h4>
-    </div>
+  <div id="messageHost" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+    
+    {!! Form::open(['route' => 'contact.store', 'class' => 'form']) !!}
 
-    @foreach($errors->all() as $error)
-      <li class="alert alert-danger">{{$error}}</li>
-    @endforeach
-  
-    <div class="modal-body">
-      {{ Form::hidden('listing_id', $details->id) }}
-      <div class="form-group">
-        {!! Form::label('Reply to email address?') !!}
-        {!! Form::text('email', $user->email, [ 'class'=>'form-control', 'placeholder'=>'Enter contact e-mail address']) !!}
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Message {!! $details->user->name !!}</h4>
       </div>
-      
-      <div class="form-group">
-        {!! Form::label('Message:')!!}
-        {!! Form::textarea('message', null, [ 'class'=>'form-control', 'placeholder'=>'Enter message.'])!!}
+
+      @foreach($errors->all() as $error)
+        <li class="alert alert-danger">{{$error}}</li>
+      @endforeach
+    
+      <div class="modal-body">
+        {{ Form::hidden('listing_id', $details->id) }}
+        <div class="form-group">
+          {!! Form::label('Reply to email address?') !!}
+          {!! Form::text('email', $user->email, [ 'class'=>'form-control', 'placeholder'=>'Enter contact e-mail address']) !!}
+        </div>
+        
+        <div class="form-group">
+          {!! Form::label('Message:')!!}
+          {!! Form::textarea('message', null, [ 'class'=>'form-control', 'placeholder'=>'Enter message.'])!!}
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        {!! Form::submit('Send email', ['class'=>'btn btn-orange form-control']) !!}
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
     </div>
+    {!! Form::close() !!}
 
-    <div class="modal-footer">
-      {!! Form::submit('Send email', ['class'=>'btn btn-orange form-control']) !!}
-      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
     </div>
   </div>
-  {!! Form::close() !!}
 
-  </div>
-</div>
+@endif
 
 
 @endsection
