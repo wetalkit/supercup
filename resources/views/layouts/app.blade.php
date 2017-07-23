@@ -5,6 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta property="og:url"           content="{{ url()->current() }}" />
+    <meta property="og:type"          content="website" />
+    <meta property="og:title"         content="Super Cup 2017 Accommodation" />
+    <meta property="og:description"   content="This website is created to offer free tourist accommodation in Skopje for the upcoming UEFA Super Cup." />
+    <meta property="og:image"         content="{{ url('/images/logo.png') }}" />
 
     <title>{{ config('app.name', 'Super Cup 2017 Accommodation') }}</title>
     
@@ -25,6 +30,14 @@
 
 </head>
 <body>
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.10&appId=274999166309959";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
     <header>
         <nav class="nav-wrapper">
             <div class="logo">
