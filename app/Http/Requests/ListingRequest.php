@@ -31,8 +31,7 @@ class ListingRequest extends FormRequest
             // 'pictures.*' => ['mimes:jpeg,jpg,png,bmp,gif,svg'],
             'no_people' => ['required', 'min:1', 'max:2'],
             'no_beds' => ['required', 'min:1', 'max:2'],
-            'date_from' => ['required', 'date', 'after:2017-08-06'],
-            'date_to' => ['required', 'date', 'after:start_date', 'before:2017-08-11'],
+            'daterange' => ['required'],
             'contact_email' => ['email', 'required'],
             'terms_accepted' => ['required']
         ];

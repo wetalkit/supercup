@@ -18,24 +18,10 @@ Route::get('/login', 'SocialAuthController@redirect')->name('login');
 Route::get('/callback', 'SocialAuthController@callback');
 Route::post('/logout', 'SocialAuthController@logout')->name('logout');
 
-Route::group(['prefix' => 'book', 'middleware' => 'auth'], function (){
-    Route::get('/', function (){
-        return "Here comes the book view";
-    });
-});
+Route::resource('listing', 'ListingController');
+Route::post('listing/book/{listing}', 'ListingController@book')->name('listing.book');
 
-Route::resource('listing', 'ListingController', ['names' => [ 
-    'create' => 'listing.create',
-    'show' => 'listing.show',
-    'index' => 'listing.index'
-]]);
-
-Route::resource('contact', 'ContactController', ['names' => [
-    'create' => 'contact.create',
-    'show' => 'contact.show',
-    'store' => 'contact.store',
-
-]]);
+Route::resource('contact', 'ContactController');
 
 Route::get('/storage/{path}', function($path) {
     return response()->file(storage_path().'/app/'.$path);
