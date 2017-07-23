@@ -33,7 +33,7 @@
 
 						<p>Suddenly after the scandal, many Macedonians over the social networks offered <b>FREE accommodation</b> for the fans who got tickets for the match. <b>That’s when it clicked us, why don’t we use our IT and marketing skills to create a positive social impact?</b></p>
 
-            <p>This was the exact moment when We Talk IT members decided to create this platform <b>offering foreign fans to find FREE place for a night or two.</b> So, if you need a place to crash, check the FAQ page or search the listings right away!</p>
+            <p>This was the exact moment when We Talk IT members decided to create this platform <b>offering foreign fans to find FREE place for a night or two.</b> So, if you need a place to crash, check the <a href="/faq">FAQ</a> page or <a href="/">search the listings</a> right away!</p>
 
 		                <p><b>We hope that you will choose to stay in Skopje area and enjoy the Super Cup 2017!🤞</b></p>
 
