@@ -28,7 +28,7 @@
     <header>
         <nav class="nav-wrapper">
             <div class="logo">
-                <img src="images/logo.png" class="logo">
+                <img src="/images/logo.png" class="logo">
             </div>
             <ul class="menu js-main-nav">
                 <li><a href="{{ route('listing.create') }}" class="become-a-host-btn">Become a Host</a></li>
@@ -41,6 +41,11 @@
                         </a>
                         <ul class="dropdown-menu" role="menu">
                             <li>
+                                @foreach(Auth::user()->listings as $listing)
+                                <a href="{{ route('listing.edit', $listing->id) }}">
+                                    {{$listing->title}}
+                                </a>
+                                @endforeach
                                 <a href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
                                              document.getElementById('logout-form').submit();">
@@ -69,5 +74,6 @@
     <script src="{{ asset('js/daterangepicker.js') }}"></script>
     <script src="{{ asset('js/main.js') }}"></script>
 
+    @yield('additionalJs')
 </body>
 </html>

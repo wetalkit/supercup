@@ -3,7 +3,6 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use App\User;
 
 class Listing extends Model
 {
@@ -24,8 +23,8 @@ class Listing extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function setTermsAcceptedAttribute($value)
+    public function contacts()
     {
-        $this->attributes['terms_accepted'] = $value == 'on' ? 1 : 0;
+        return $this->hasMany(ListingContact::class);
     }
 }

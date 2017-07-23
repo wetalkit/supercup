@@ -7,13 +7,19 @@ use Illuminate\Http\Request;
 
 use App\User;
 use App\Http\Requests\ListingRequest;
+use App\Http\Requests\BookRequest;
 use App\Listing;
 use App\ListingPictures;
 use Auth;
 use App\Helpers\Location;
+use Carbon\Carbon;
 
 class ListingController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth', ['except' => ['index']]);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -53,7 +59,7 @@ class ListingController extends Controller
      */
     public function create()
     {
-        return view('new_listing');
+        return view('new-listing');
     }
 
     /**
@@ -64,20 +70,10 @@ class ListingController extends Controller
      */
     public function store(ListingRequest $request)
     {
-        $data = $request->except(['pictures']) + ['user_id' => Auth::user()->id];
-        $data = $data + [
-            'lat' => 0, 'lng' => 0, 'distance_stadium' => 0, 'distance_stadium_time' => 0
-        ];
+        $data = $this->prepareListing($request);
         $listing = Listing::create($data);
-        $pictures = $request->file('pictures');
-        foreach ($pictures as $picture) {
-            $path = $picture->store('listing_pictures');
-            ListingPictures::create([
-                'picture' => $path,
-                'listing_id' => $listing->id
-            ]);
-        }
-        return redirect()->route('listing.index');
+        $this->uploadPictures($request, $listing);
+        return redirect()->route('listing.edit', $listing->id);
     }
 
     /**
@@ -86,9 +82,8 @@ class ListingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Listing $listing)
     {
-        $details = Listing::find($id);
         $user = User::find($details->user_id);
         return view('listing-details', compact('details', 'user'));
     }
@@ -99,9 +94,13 @@ class ListingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Listing $listing)
     {
-        //
+        $bookers = [];
+        foreach ($listing->contacts as $contact) {
+            $bookers[$contact->sender_id] = $contact->booker->name;
+        }
+        return view('edit-listing', compact('listing', 'bookers'));
     }
 
     /**
@@ -111,19 +110,65 @@ class ListingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ListingRequest $request, Listing $listing)
     {
-        //
+        $data = $this->prepareListing($request);
+        $listing->update($data);
+        $imgs_delete = $request->imgs_delete ? explode(',',trim($request->imgs_delete, ',')) : [];
+        foreach ((array)$imgs_delete as $image) {
+            $listingPicture = ListingPictures::find($image);
+            unlink(storage_path().'/app/'.$listingPicture->picture);
+            $listingPicture->delete();
+        } 
+        if($request->pictures) {
+            $this->uploadPictures($request, $listing);
+        }
+        return redirect()->route('listing.edit', $id);
+    }
+
+    private function prepareListing($request)
+    {
+        $data = $request->except(['pictures', 'daterange', 'imgs_delete']) + ['user_id' => Auth::user()->id];
+        $daterange = explode('-', $request->get('daterange'));
+        $data['date_from'] = Carbon::createFromFormat('d M Y', trim($daterange[0]).' 2017');
+        $data['date_to'] = Carbon::createFromFormat('d M Y', trim($daterange[1]).' 2017');
+        $distance = Location::calculateWalkingDistance($data['lat'], $data['lng']);
+        $data['distance_stadium'] = $distance['distance'];
+        $data['distance_stadium_time'] = $distance['time'];
+        return $data;
+    }
+
+    private function uploadPictures($request, $listing)
+    {
+        $pictures = $request->file('pictures');
+        foreach ($pictures as $picture) {
+            $path = $picture->store('listing_pictures');
+            ListingPictures::create([
+                'picture' => $path,
+                'listing_id' => $listing->id
+            ]);
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  Listing  $listing
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Listing $listing)
     {
-        //
+        foreach ($listing->pictures as $picture) {
+            unlink(storage_path().'/app/'.$picture->picture);
+            $picture->delete();
+        }
+        $listing->delete();
+        return redirect('/');
+    }
+
+    public function book(BookRequest $request, Listing $listing)
+    {
+        $listing->update(['status' => 1, 'booker_id' => $request->booker_id]);
+        return redirect()->back();
     }
 }

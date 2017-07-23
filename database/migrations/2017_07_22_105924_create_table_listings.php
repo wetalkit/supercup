@@ -20,7 +20,7 @@ class CreateTableListings extends Migration
             $table->string('address');
             $table->string('lat', 20);
             $table->string('lng', 20);
-            $table->decimal('distance_stadium', 5, 2);
+            $table->integer('distance_stadium');
             $table->integer('distance_stadium_time');
             $table->integer('no_people');
             $table->integer('no_beds');
