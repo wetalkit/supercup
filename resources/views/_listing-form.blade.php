@@ -128,6 +128,15 @@
                 $('input[name="lng"]').val(places[0].geometry.location.lng());
             });
         }  
+        function getParameterByName(name, url) {
+            if (!url) url = window.location.href;
+            name = name.replace(/[\[\]]/g, "\\$&");
+            var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, " "));
+        }
         initialize();  
         $('.delete-img').click(function(e) {
             e.preventDefault();
@@ -144,6 +153,28 @@
             $('#book-modal form').attr('action', $(this).data('href'));
             $('#book-modal').modal('show');
         });
+        
+        if(getParameterByName('share') == 'y') {
+            $('#share-modal').modal('show');
+        }
     });
+</script>
+<script>
+    window.twttr = (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0],
+        t = window.twttr || {};
+      if (d.getElementById(id)) return t;
+      js = d.createElement(s);
+      js.id = id;
+      js.src = "https://platform.twitter.com/widgets.js";
+      fjs.parentNode.insertBefore(js, fjs);
+
+      t._e = [];
+      t.ready = function(f) {
+        t._e.push(f);
+      };
+
+      return t;
+    }(document, "script", "twitter-wjs"));
 </script>
 @endsection

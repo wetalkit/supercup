@@ -46,7 +46,7 @@ class ListingController extends Controller
         $listing = Listing::create($data);
         $listing->user->update(['email' => $listing->contact_email]);
         $this->uploadPictures($request, $listing);
-        return redirect()->route('listing.edit', $listing->id);
+        return redirect()->route('listing.edit', [$listing->id, 'share' => 'y']);
     }
 
     /**
