@@ -345,21 +345,37 @@ section.hero {
     box-shadow: 0 1px 3px 0px rgba(0, 0, 0, 0.08) !important;
     padding: 25px;
 }
+
+.daterangepicker td.active {
+    background-color: #e25626;
+}
+
 .dropdown-holder input, 
 .dropdown-holder .bootstrap-select,
 .dropdown-holder .bootstrap-select button,
 .bootstrap-select.btn-group .dropdown-menu li,
-.bootstrap-select.btn-group .dropdown-menu li a:hover,
-.bootstrap-select.btn-group .dropdown-menu li a:focus,
 .bootstrap-select > .dropdown-toggle.bs-placeholder, 
 .bootstrap-select > .dropdown-toggle.bs-placeholder:hover, 
-.bootstrap-select > .dropdown-toggle.bs-placeholder:focus, 
-.bootstrap-select > .dropdown-toggle.bs-placeholder:active {
+.bootstrap-select > .dropdown-toggle.bs-placeholder:active,
+.open>.dropdown-toggle.btn-default,
+.open>.dropdown-toggle.btn-default:hover {
     border: none !important;
     box-shadow: none !important;
     padding-left: 0px !important;
     background: white;
+
 }
+
+.bootstrap-select > .dropdown-toggle.bs-placeholder:focus, 
+.bootstrap-select.btn-group .dropdown-menu li a:focus,
+.bootstrap-select.btn-group .dropdown-menu li:focus,
+.dropdown-holder .bootstrap-select button:focus {
+    outline:0px !important;
+    -webkit-appearance:none;
+    background: white;
+    border: none !important;
+}
+
 .gallery-section {
     width:100%;
     height:250px;
@@ -588,7 +604,11 @@ section.similar-places h2 {
 section.similar-places {
     margin: 30px 0;
 }
-
+.dropdown-menu>li>a:hover {
+    background-color: transparent;
+    background-image: none;
+    color: #ce4719;
+}
 body.single-listing .row {
     margin: 30px 0;
 }
