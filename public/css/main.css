@@ -346,13 +346,10 @@ section.hero {
     padding: 25px;
 }
 
-<<<<<<< HEAD
 .daterangepicker td.active {
     background-color: #e25626;
 }
 
-=======
->>>>>>> master
 .dropdown-holder input, 
 .dropdown-holder .bootstrap-select,
 .dropdown-holder .bootstrap-select button,
