@@ -20,15 +20,15 @@
           </div>
 
           <div class="col-md-3 col-sm-3">
-          @if($user)
             @if($listing->status)
-            <span class="label label-success booked">Booked</span>
+              <span class="label label-success booked">Booked</span>
             @else
-            <button type="button" class="btn btn-orange btn-orange-inverse pull-right" data-toggle="modal"  data-target="#messageHost">Message Host</button>
+              @if($user->id != $listing->user_id)
+                <button type="button" class="btn btn-orange btn-orange-inverse pull-right" data-toggle="modal"  data-target="{{$user ? '#messageHost' : '#loginModal'}}">Message Host</button>
+              @else
+                <a type="button" class="btn btn-orange btn-orange-inverse pull-right" href="{{route('listing.edit', $listing->id)}}">Edit</a>
+              @endif
             @endif
-          @else
-            <button type="button" class="btn btn-orange btn-orange-inverse pull-right" data-toggle="modal"  data-target="#loginModal">Message Host</button>
-          @endif
           </div>
         </div>
         <hr/>
