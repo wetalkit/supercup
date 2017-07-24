@@ -20,11 +20,11 @@
 
         <p>Hi {{ $listing->user->name }},</p>
 
-        <p>{{ $guest->name }} is interested in being your guest for the upcomming UEFA Super Cup in Skopje.</p>
+        <p>{{ $guest->name }} is interested in being your guest for the upcoming UEFA Super Cup 2017 in Skopje.</p>
 
-        <p>Here is the message sent by {{ $guest->name }}:</p>
+        <p><b>Here is the message sent by {{ $guest->name }}:</b></p>
 
-        <p>{{ $messageContent }}</p>
+        <p>"{{ $messageContent }}"</p>
 
         <table border="0" cellpadding="0" cellspacing="0" class="btn btn-primary">
           <tbody>

@@ -27,8 +27,8 @@
                     </div>
 
                    <div class="dropdown col-lg-3 col-sm-3">
-                        <label>People</label>
-                        <select name="people" class="selectpicker" title="Number of People">
+                        <label>Guests</label>
+                        <select name="people" class="selectpicker" title="Number of guests">
                             @foreach($peopleSelect as $people)
                                 <option value="{!! $people !!}" {!! (isset($inputs['people']) && $inputs['people']==$people) ? 'selected' : '' !!}>{!! $people !!}</option>
                             @endforeach

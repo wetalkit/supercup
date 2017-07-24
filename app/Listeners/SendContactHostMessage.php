@@ -34,7 +34,7 @@ class SendContactHostMessage implements ShouldQueue
         {
             $message->to($listing->user->email, $listing->user->name);
             $message->replyTo($guest->email, $guest->name);
-            $message->subject('A new request your free listing on '.config('app.name').'!');
+            $message->subject('New Request for your Listing on SuperCup Skopje');
         });
     }
 }
