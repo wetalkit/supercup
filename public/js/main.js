@@ -18,11 +18,22 @@ $(document).ready(function() {
         $(this).toggleClass('active');
     });
 
+    var dateFrom = $('input[name="daterange"]').attr('date-from');
+    var dateTo = $('input[name="daterange"]').attr('date-to');
+
+    if(dateFrom == ''){
+        dateFrom = '08 Aug';
+    }
+
+    if(dateTo == ''){
+        dateTo = '09 Aug';
+    }
+
     $('input[name="daterange"]').daterangepicker({
         minDate: '04 Aug',
         maxDate: '10 Aug',
-        startDate: '08 Aug',
-        endDate: '09 Aug',
+        startDate: dateFrom,
+        endDate: dateTo,
         locale: {
           format: 'DD MMM'
         }

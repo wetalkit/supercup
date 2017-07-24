@@ -46,7 +46,7 @@
         </div>
         <div class="form-group">
             {!! Form::label('daterange', 'For which period are you offering your space?') !!}
-            {!! Form::input('text', 'daterange', null, ['class' => 'form-control', 'required' => true]) !!}
+            {!! Form::input('text', 'daterange', null, ['class' => 'form-control', 'required' => true, 'date-from'=>@$listing->dateFromFormatted, 'date-to' => @$listing->dateToFormatted]) !!}
             @foreach($errors->get('daterange') as $error)
             <p class="form-error">{{$error}}</p>
             @endforeach

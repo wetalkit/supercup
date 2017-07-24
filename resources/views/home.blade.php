@@ -14,22 +14,24 @@
 
                     <div class="col-lg-3 col-sm-3">
                         <label>When</label>
-                        <input name="daterange" class="form-control" type="text" placeholder="Anytime" />
+                        <input name="daterange" class="form-control" type="text" placeholder="Anytime" value="{!! @$inputs['daterange'] !!}" date-from="{!! @$inputs['dates'][0] !!}" date-to="{!! @$inputs['dates'][1] !!}"/>
                     </div>
 
                    <div class="dropdown col-lg-3 col-sm-3">
                         <label>Beds</label>
                         <select name="beds" class="selectpicker" title="Number of Beds">
-                            <option>1</option>
-                            <option>2</option>
+                            @foreach($bedsSelect as $bed)
+                                <option value="{!! $bed !!}" {!! (isset($inputs['beds']) && $inputs['beds']==$bed) ? 'selected' : '' !!}>{!! $bed !!}</option>
+                            @endforeach
                         </select>
                     </div>
 
                    <div class="dropdown col-lg-3 col-sm-3">
                         <label>People</label>
                         <select name="people" class="selectpicker" title="Number of People">
-                            <option>< 1</option>
-                            <option>< 2</option>
+                            @foreach($peopleSelect as $people)
+                                <option value="{!! $people !!}" {!! (isset($inputs['people']) && $inputs['people']==$people) ? 'selected' : '' !!}>{!! $people !!}</option>
+                            @endforeach
                         </select>
                    </div>
 
