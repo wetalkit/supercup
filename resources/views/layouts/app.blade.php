@@ -67,6 +67,7 @@
                                     {{$listing->title}}
                                 </a>
                                 @endforeach
+                                <hr>
                                 <a href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
                                              document.getElementById('logout-form').submit();">

@@ -314,6 +314,11 @@ h2 {
     font-weight: 300;
 }
 
+hr {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
 section.hero {
     background-color: white;
 }
@@ -840,7 +845,7 @@ body.single-listing .row {
         padding-bottom: 20px;
     }
 
-    a.dropdown-toggle {
+    .menu>li>a {
         color: white;
     }
 
@@ -894,6 +899,12 @@ body.single-listing .row {
         top: 25px;
         z-index: 10;
     }
+
+    .link-item>div {
+        padding-bottom: 20px;
+        border-bottom: 1px solid #ccc;
+    }
+}
 
 @media only screen and (max-width: 768px) {
     section.hero .container {
