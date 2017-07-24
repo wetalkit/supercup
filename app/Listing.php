@@ -65,7 +65,7 @@ class Listing extends Model
      */
     public function getDateToFormattedAttribute()
     {
-        return Formatter::formatDate($this->attributes['date_to'], 'd M Y');
+        return Formatter::formatDate($this->attributes['date_to'], 'd M');
     }
 
     /**
