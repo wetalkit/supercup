@@ -77,7 +77,7 @@
             </div>
             <div class="col-sm-3">
                 <p>Beds<br/>
-                    <span class="small">Max 2 guests</span>
+                    <span class="small">Max 2 beds</span>
                 </p>
             </div>
             <div class="col-sm-2">
