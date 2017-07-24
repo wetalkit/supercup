@@ -31,11 +31,11 @@ class HomeController extends Controller
 
         $listings = Listing::where('terms_accepted', 1);
 
-        if(array_key_exists('beds', $inputs) && $inputs['beds']){
+        if (array_key_exists('beds', $inputs) && $inputs['beds']) {
             $listings->where('no_beds', $inputs['beds']);
         }
 
-        if(array_key_exists('people', $inputs) && $inputs['people']){
+        if (array_key_exists('people', $inputs) && $inputs['people']) {
             $listings->where('no_people', $inputs['people']);
         }
 
@@ -44,10 +44,9 @@ class HomeController extends Controller
             $dateFrom = Carbon::createFromFormat('d M Y H:i:s', trim($inputs['dates'][0]).' 2017 23:59:29');
             $dateTo = Carbon::createFromFormat('d M Y H:i:s', trim($inputs['dates'][1]).' 2017 00:00:00');
 
-            $listings->where('date_from','<=', $dateFrom);
-            $listings->where('date_to','>=', $dateTo);
+            $listings->where('date_from', '<=', $dateFrom);
+            $listings->where('date_to', '>=', $dateTo);
         }
-
         
         $listings = $listings->get();
 
