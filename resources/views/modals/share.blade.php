@@ -3,10 +3,9 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">Thank you for your support</h4>
+        <h4 class="modal-title">You are amazing! ❤ Thank you for your support.</h4>
       </div>
       <div class="modal-body">
-        <p>You are amazing! ❤ Thank you for your support.</p>
         <p>Let’s call your friends to join the initiative?</p>
         <div class="text-center">
           <div class="fb-share-button" data-href="{{url('/')}}" data-layout="button_count" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="{{url('/')}}">Share</a></div>

@@ -45,10 +45,9 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">Thank you for listing your place</h4>
+        <h4 class="modal-title">We love it! ❤ It’s live! Thank you for being such caring citizen.</h4>
       </div>
       <div class="modal-body">
-        <p>We love it! ❤  It’s live! Thank you for being such caring citizen.</p>
         <p>Let’s share your impact with the community!</p>
         <div class="text-center">
           <div class="fb-share-button" data-href="{{route('listing.show', $listing->id)}}" data-layout="button_count" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="{{route('listing.show', $listing->id)}}">Share</a></div>
