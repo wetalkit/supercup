@@ -733,6 +733,9 @@ section.similar-places h2 {
 section.similar-places {
     margin: 30px 0;
 }
+.dropdown-menu>li>a {
+    white-space: normal;
+}
 .dropdown-menu>li>a:hover {
     background-color: transparent;
     background-image: none;
