@@ -814,6 +814,7 @@ body.single-listing .row {
 .modal-footer .btn-orange {
     line-height: 14px;
 }
+
 /* GENERAL SMALL VISUAL FIXES */
 section.active-places .row {
     padding: 0px 10px 25px;
@@ -831,6 +832,12 @@ footer ul.links-nav {
     display: flex;
     justify-content: space-around;
 }
+
+.bootstrap-select:not([class*="col-"]):not([class*="form-control"]):not(.input-group-btn) {
+    width: initial !important;
+  }
+
+
 /* MEDIA QUERIES / RESPONSIVENESS START */
 
 /* RESPONSIVE MENU START*/
