@@ -12,28 +12,30 @@
                     
                 {{ Form::open(['url' => '/', 'method' => 'GET']) }}
 
-                    <div class="col-lg-3 col-sm-6">
+                    <div class="col-lg-3 col-sm-3">
                         <label>When</label>
-                        <input name="daterange" class="form-control" type="text" placeholder="Anytime" />
+                        <input name="daterange" class="form-control" type="text" placeholder="Anytime" value="{!! @$inputs['daterange'] !!}" date-from="{!! @$inputs['dates'][0] !!}" date-to="{!! @$inputs['dates'][1] !!}"/>
                     </div>
 
-                   <div class="dropdown col-lg-3 col-sm-6">
+                   <div class="dropdown col-lg-3 col-sm-3">
                         <label>Beds</label>
                         <select name="beds" class="selectpicker" title="Number of Beds">
-                            <option>1</option>
-                            <option>2</option>
+                            @foreach($bedsSelect as $bed)
+                                <option value="{!! $bed !!}" {!! (isset($inputs['beds']) && $inputs['beds']==$bed) ? 'selected' : '' !!}>{!! $bed !!}</option>
+                            @endforeach
                         </select>
                     </div>
 
-                   <div class="dropdown col-lg-3 col-sm-6">
-                        <label>People</label>
-                        <select name="people" class="selectpicker" title="Number of People">
-                            <option>< 1</option>
-                            <option>< 2</option>
+                   <div class="dropdown col-lg-3 col-sm-3">
+                        <label>Guests</label>
+                        <select name="people" class="selectpicker" title="Number of guests">
+                            @foreach($peopleSelect as $people)
+                                <option value="{!! $people !!}" {!! (isset($inputs['people']) && $inputs['people']==$people) ? 'selected' : '' !!}>{!! $people !!}</option>
+                            @endforeach
                         </select>
                    </div>
 
-                    <div class="btn-holder col-lg-3 col-sm-6">
+                    <div class="btn-holder col-lg-3 col-sm-3">
                         <label>&nbsp;</label>
                         <button class="btn btn-primary btn-find">Find</button>
                     </div> 

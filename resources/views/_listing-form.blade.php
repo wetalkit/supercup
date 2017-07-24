@@ -17,6 +17,7 @@
         <div class="form-group">
             {!! Form::label('pictures', 'Upload Photo') !!}
             {!! Form::input('file', 'pictures[]', null, ['class' => 'form-control', 'multiple' => true, 'required' => @$listing->id ? false : true]) !!}
+            <p class="small">You can upload multiple photos at once, just hold your ctrl/cmd key while selecting.</p>
             @foreach($errors->get('pictures') as $error)
             <p class="form-error">{{$error}}</p>
             @endforeach
@@ -49,7 +50,7 @@
         </div>
         <div class="form-group">
             {!! Form::label('daterange', 'For which period are you offering your space?') !!}
-            {!! Form::input('text', 'daterange', null, ['class' => 'form-control', 'required' => true]) !!}
+            {!! Form::input('text', 'daterange', null, ['class' => 'form-control', 'required' => true, 'date-from'=>@$listing->dateFromFormatted, 'date-to' => @$listing->dateToFormatted]) !!}
             @foreach($errors->get('daterange') as $error)
             <p class="form-error">{{$error}}</p>
             @endforeach
@@ -58,12 +59,12 @@
             <div>
                 {!! Form::label('no_people', 'How many guests can you accomodate?') !!}
             </div>
-            <div class="col-md-3 col-sm-6">
+            <div class="col-sm-3">
                 <p>Guests<br/>
                     <span class="small">Max 2 guests</span>
                 </p>
             </div>
-            <div class="col-md-2 col-sm-6">
+            <div class="col-sm-2">
             {!! Form::select('no_people', [1 => 1, 2 => 2], null, ['class' => 'selectpicker', 'required' => true]) !!}
             </div>
             @foreach($errors->get('no_people') as $error)
@@ -74,12 +75,12 @@
             <div>
                 {!! Form::label('no_beds', 'How many beds are available?') !!}
             </div>
-            <div class="col-md-3 col-sm-6">
+            <div class="col-sm-3">
                 <p>Beds<br/>
                     <span class="small">Max 2 guests</span>
                 </p>
             </div>
-            <div class="col-md-2 col-sm-6">
+            <div class="col-sm-2">
             {!! Form::select('no_beds', [1 => 1, 2 => 2], null, ['class' => 'selectpicker', 'required' => true]) !!}
             </div>
             @foreach($errors->get('no_beds') as $error)
@@ -120,7 +121,7 @@
     $(document).ready(function() {
         function initialize() {
             var options = {
-                componentRestrictions: {country: "mk"}
+                componentRestrictions: {country: "MK"}
             };
             var input = document.getElementById('address');
             var autocomplete = new google.maps.places.Autocomplete(input, options);

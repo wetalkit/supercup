@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Listing;
+use Carbon\Carbon;
 
 class HomeController extends Controller
 {
@@ -23,10 +24,33 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
+        $bedsSelect = [1,2];
+        $peopleSelect = [1,2];
 
-        $listings = Listing::all();
+        $inputs = $request->all();
 
-        return view('home', compact('listings'));
+        $listings = Listing::where('terms_accepted', 1);
+
+        if (array_key_exists('beds', $inputs) && $inputs['beds']) {
+            $listings->where('no_beds', $inputs['beds']);
+        }
+
+        if (array_key_exists('people', $inputs) && $inputs['people']) {
+            $listings->where('no_people', $inputs['people']);
+        }
+
+        if (array_key_exists('daterange', $inputs) && $inputs['daterange']) {
+            $inputs['dates'] = explode(' - ', $inputs['daterange']);
+            $dateFrom = Carbon::createFromFormat('d M Y H:i:s', trim($inputs['dates'][0]).' 2017 23:59:29');
+            $dateTo = Carbon::createFromFormat('d M Y H:i:s', trim($inputs['dates'][1]).' 2017 00:00:00');
+
+            $listings->where('date_from', '<=', $dateFrom);
+            $listings->where('date_to', '>=', $dateTo);
+        }
+        
+        $listings = $listings->get();
+
+        return view('home', compact('listings', 'inputs', 'bedsSelect', 'peopleSelect'));
     }
 
     /**

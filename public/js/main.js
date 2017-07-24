@@ -5,15 +5,12 @@ $(document).ready(function() {
     var mainOverlay = $('.js-main-overlay');
     
     menuTrigger.on('click', function(){
-      body.addClass('menu-is-active');
+        body.addClass('menu-is-active');
     });
     
-    mainOverlay.on('click', function(){
-      body.removeClass('menu-is-active');
-    });
-
-    $('.menu li a').on('click', function(){
-      $('body').removeClass('menu-is-active');
+    mainOverlay.on('click', function(e){
+        console.log(e.target);
+        body.removeClass('menu-is-active');
     });
 
     $('.faq-title').click(function(){
@@ -21,11 +18,22 @@ $(document).ready(function() {
         $(this).toggleClass('active');
     });
 
+    var dateFrom = $('input[name="daterange"]').attr('date-from');
+    var dateTo = $('input[name="daterange"]').attr('date-to');
+
+    if(dateFrom == ''){
+        dateFrom = '08 Aug';
+    }
+
+    if(dateTo == ''){
+        dateTo = '09 Aug';
+    }
+
     $('input[name="daterange"]').daterangepicker({
         minDate: '04 Aug',
         maxDate: '10 Aug',
-        startDate: '08 Aug',
-        endDate: '09 Aug',
+        startDate: dateFrom,
+        endDate: dateTo,
         locale: {
           format: 'DD MMM'
         }
