@@ -10,6 +10,7 @@
 				<li><a href="/about">About</li>
 				<li><a href="/faq">FAQ</a></li>
 				<li><a href="/privacy">Privacy</a></li>
+				<li><a href="/bug">Report a bug</li>
 			</ul>
 		</div>
 		<div class="links-group col-lg-1 col-sm-1">

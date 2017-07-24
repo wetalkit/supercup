@@ -82,4 +82,14 @@ class HomeController extends Controller
     {
         return view('privacy');
     }
+
+    /**
+     * Report a bug page
+     * 
+     * @return view
+     */
+    public function bug()
+    {
+        return view('bug');
+    }
 }

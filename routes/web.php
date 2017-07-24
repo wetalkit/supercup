@@ -15,6 +15,7 @@ Route::get('/', 'HomeController@index');
 Route::get('/faq', 'HomeController@faq');
 Route::get('/about', 'HomeController@about');
 Route::get('/privacy', 'HomeController@privacy');
+Route::get('/bug', 'HomeController@bug');
 
 Route::get('/login', 'SocialAuthController@redirect')->name('login');
 Route::get('/callback', 'SocialAuthController@callback');
