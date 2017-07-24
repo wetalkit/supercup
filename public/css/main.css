@@ -371,6 +371,7 @@ section.hero {
     padding-left: 0px !important;
     background: white;
     max-width: 100%;
+    width: initial !important;
 }
 
 .bootstrap-select > .dropdown-toggle.bs-placeholder:focus, 
