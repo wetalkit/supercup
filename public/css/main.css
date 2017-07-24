@@ -840,8 +840,7 @@ body.single-listing .row {
         padding-bottom: 20px;
     }
 
-    .menu li a {
-        font-size: 18px;
+    a.dropdown-toggle {
         color: white;
     }
 

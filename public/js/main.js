@@ -5,15 +5,12 @@ $(document).ready(function() {
     var mainOverlay = $('.js-main-overlay');
     
     menuTrigger.on('click', function(){
-      body.addClass('menu-is-active');
+        body.addClass('menu-is-active');
     });
     
-    mainOverlay.on('click', function(){
-      body.removeClass('menu-is-active');
-    });
-
-    $('.menu li a').on('click', function(){
-      $('body').removeClass('menu-is-active');
+    mainOverlay.on('click', function(e){
+        console.log(e.target);
+        body.removeClass('menu-is-active');
     });
 
     $('.faq-title').click(function(){

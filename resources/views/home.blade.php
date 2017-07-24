@@ -12,12 +12,12 @@
                     
                 {{ Form::open(['url' => '/', 'method' => 'GET']) }}
 
-                    <div class="col-lg-3 col-sm-6">
+                    <div class="col-lg-3 col-sm-3">
                         <label>When</label>
                         <input name="daterange" class="form-control" type="text" placeholder="Anytime" />
                     </div>
 
-                   <div class="dropdown col-lg-3 col-sm-6">
+                   <div class="dropdown col-lg-3 col-sm-3">
                         <label>Beds</label>
                         <select name="beds" class="selectpicker" title="Number of Beds">
                             <option>1</option>
@@ -25,7 +25,7 @@
                         </select>
                     </div>
 
-                   <div class="dropdown col-lg-3 col-sm-6">
+                   <div class="dropdown col-lg-3 col-sm-3">
                         <label>People</label>
                         <select name="people" class="selectpicker" title="Number of People">
                             <option>< 1</option>
@@ -33,7 +33,7 @@
                         </select>
                    </div>
 
-                    <div class="btn-holder col-lg-3 col-sm-6">
+                    <div class="btn-holder col-lg-3 col-sm-3">
                         <label>&nbsp;</label>
                         <button class="btn btn-primary btn-find">Find</button>
                     </div> 
