@@ -68,7 +68,7 @@
                     <h3 class="listing-author">by {!! $listing->user->name !!}</h3>
                     <span class="distance">{!! $listing->distanceFormatted !!} from Stadium</span>
                     <span>-</span>
-                    <span class="nr-of-beds">{!! $listing->no_beds !!} beds</span>
+                    <span class="nr-of-beds">{!! $listing->no_beds !!} bed{{$listing->no_beds == 1 ? '' : 's'}}</span>
                   </div>
               </a>
 
