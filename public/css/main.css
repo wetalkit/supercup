@@ -568,6 +568,11 @@ a.link-item:hover {
     display: block;
 }
 
+.link-item .gallery-section {
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 .btn-success {
     background: #e25626 !important;
     border: 1px solid #e25626 !important;
@@ -832,11 +837,6 @@ footer ul.links-nav {
     display: flex;
     justify-content: space-around;
 }
-
-.bootstrap-select:not([class*="col-"]):not([class*="form-control"]):not(.input-group-btn) {
-    width: initial !important;
-  }
-
 
 /* MEDIA QUERIES / RESPONSIVENESS START */
 
