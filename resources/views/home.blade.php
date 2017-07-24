@@ -18,7 +18,7 @@
                     </div>
 
                    <div class="dropdown col-lg-3 col-sm-3">
-                        <label>Beds</label>
+                        <label class="lbl">Beds</label>
                         <select name="beds" class="selectpicker" title="Number of Beds">
                             @foreach($bedsSelect as $bed)
                                 <option value="{!! $bed !!}" {!! (isset($inputs['beds']) && $inputs['beds']==$bed) ? 'selected' : '' !!}>{!! $bed !!}</option>
@@ -27,7 +27,7 @@
                     </div>
 
                    <div class="dropdown col-lg-3 col-sm-3">
-                        <label>Guests</label>
+                        <label class="lbl">Guests</label>
                         <select name="people" class="selectpicker" title="Number of guests">
                             @foreach($peopleSelect as $people)
                                 <option value="{!! $people !!}" {!! (isset($inputs['people']) && $inputs['people']==$people) ? 'selected' : '' !!}>{!! $people !!}</option>
