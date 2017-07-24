@@ -25,7 +25,7 @@
     <link href="{{ asset('css/bootstrap-select.css') }}" rel="stylesheet">
     <link href="{{ asset('css/bootstrap-theme.min.css') }}" rel="stylesheet">    
     <link href="{{ asset('css/daterangepicker.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/main.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/main.css') }}?q=1500913240" rel="stylesheet">
 
     <script>
         window.Laravel = {!! json_encode([
