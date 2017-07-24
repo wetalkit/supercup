@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Laravel\Socialite\Facades\Socialite;
+use Illuminate\Http\Request;
 
 class SocialAuthController extends Controller
 {
@@ -12,8 +13,12 @@ class SocialAuthController extends Controller
         return Socialite::driver('facebook')->redirect();
     }
 
-    public function callback()
+    public function callback(Request $request)
     {
+        if (!$request->has('code') || $request->has('denied')) {
+            return redirect('/');
+        }
+
         $providerUser = \Socialite::driver('facebook')->user();
 
         if (!$user = User::where('fb_id', object_get($providerUser, 'id'))->first()) {
