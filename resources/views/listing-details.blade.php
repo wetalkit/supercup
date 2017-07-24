@@ -99,7 +99,7 @@
       <div class="message-aler-holder"></div>
 
       <div class="form-group">
-        {!! Form::label('Reply to email address?') !!}
+        {!! Form::label('Reply to email address') !!}
         {!! Form::text('email', $user->email, [ 'class'=>'form-control', 'placeholder'=>'Enter contact e-mail address']) !!}
       </div>
       
