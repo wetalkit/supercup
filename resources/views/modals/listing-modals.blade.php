@@ -55,9 +55,9 @@
           <a class="twitter-share-button"
           href="{{route('listing.show', $listing->id)}}"
           data-size="large"
-          data-text="I just made Skopje great again!🇲🇰I published free of charge accommodation for Super Cup 2017.🛏 Join me:"
+          data-text="I just published free of charge accommodation for Super Cup 2017.🇲🇰🛏 Join me:"
           data-url="{{route('listing.show', $listing->id)}}"
-          data-hashtags="wetalkit">
+          data-hashtags="wetalkit, SuperCup2017">
         Tweet</a>
         </div>
       </div>

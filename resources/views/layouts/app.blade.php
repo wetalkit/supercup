@@ -7,7 +7,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta property="og:url"           content="{{ url()->current() }}" />
     <meta property="og:type"          content="website" />
-    <meta property="og:title"         content="Let’s Make Skopje Great Again🇲🇰" />
+    <meta property="og:title"         content="Free Tourist Accommodation for Super Cup Skopje🇲🇰" />
     <meta property="og:description"   content="Super Cup Skopje is an open-source project created by the We Talk IT community, to offer FREE tourist accommodation in Skopje for the upcoming UEFA Super Cup 2017." />
     <meta property="og:image"         content="{{ url('/images/og-img.png') }}" />
 
@@ -115,16 +115,7 @@
     <script src="{{ asset('js/moment.js') }}"></script>
     <script src="{{ asset('js/daterangepicker.js') }}"></script>
     <script src="{{ asset('js/main.js') }}"></script>
-    <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-      ga('create', 'UA-103028181-1', 'auto');
-      ga('send', 'pageview');
-
-    </script>
+    
     @yield('additionalJs')
 
     @include('modals.signup')
