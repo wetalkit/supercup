@@ -811,6 +811,27 @@ body.single-listing .row {
 .modal-footer .btn-orange {
     line-height: 14px;
 }
+/* GENERAL SMALL VISUAL FIXES */
+section.active-places .row {
+    padding: 0px 10px;
+}
+
+.heading .by .img {
+    margin: 0 5px;
+}
+
+section.listing .container {
+    padding: 70px 15px 0;
+}
+
+.slick-track img {
+    margin-bottom: 30px !important;
+}
+
+footer ul.links-nav {
+    display: flex;
+    justify-content: space-around;
+}
 /* MEDIA QUERIES / RESPONSIVENESS START */
 
 /* RESPONSIVE MENU START*/
