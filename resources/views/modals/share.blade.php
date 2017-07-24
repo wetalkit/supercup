@@ -11,7 +11,7 @@
         <div class="text-center">
           <div class="fb-share-button" data-href="{{url('/')}}" data-layout="button_count" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="{{url('/')}}">Share</a></div>
           <a class="twitter-share-button"
-          href="{{route('listing.show', $listing->id)}}"
+          href="{{url('/')}}"
           data-size="large"
           data-text="I just supported #SuperCup Free Accommodation initiative from @WeTalkIT. 🇲🇰🛏 Let’s share the love:"
           data-url="{{url('/')}}">
