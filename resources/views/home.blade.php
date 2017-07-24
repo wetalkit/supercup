@@ -62,7 +62,7 @@
               <a href="{{ route('listing.show', $listing->id) }}" class="link-item">
                   <div class="col-md-4 col-sm-6">
                     <div class="gallery-section {{$listing->status ? 'booked' : ''}}">
-                        <img src="{!! route('storage', $listing->defaultImageSrc) !!}" alt={!! $listing->title !!}>
+                        <img src="{!! $listing->defaultImageSrc ? route('storage', $listing->defaultImageSrc) : '/images/imagena.jpg' !!}" alt={!! $listing->title !!}>
                         <span class="label label-booked">Booked</span>
                     </div>
                     <h3 class="listing-author">by {!! $listing->user->name !!}</h3>
