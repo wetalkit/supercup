@@ -32,10 +32,6 @@ $(document).ready(function() {
         dateTo = '09 Aug';
     }
 
-    console.log(dateFrom);
-    console.log(dateTo);
-
-
     $('input[name="daterange"]').daterangepicker({
         minDate: '04 Aug',
         maxDate: '10 Aug',
