@@ -414,6 +414,9 @@ section.hero {
     font-size: 30px;
 }
 
+.heading .cta {
+    text-align: right;
+}
 
 .listingform .form-group {
      margin-right: 0; 
@@ -892,15 +895,6 @@ body.single-listing .row {
         top: 25px;
         z-index: 10;
     }
-    a.become-a-host-btn, .btn-orange {
-        background: none;
-        padding: 0;
-        max-width: none;
-        border-radius: none;
-    }
-    a.become-a-host-btn:hover, .btn-orange:hover {
-        background: transparent;
-    }
 
 @media only screen and (max-width: 768px) {
     section.hero .container {
@@ -913,12 +907,24 @@ body.single-listing .row {
     }
 
     h2 {
-        font-size: 22px;
+        font-size: 18px;
         line-height: 27px;
     }
 
     .link-item div {
-         text-align: center;
+        text-align: center;
+    }
+
+    .links-group, .supportedBy {
+        margin-bottom: 10px;
+    }
+
+    .heading .btn, .heading .label {
+        margin-top: 15px;
+    }
+
+    .heading .cta {
+        text-align: center;
     }
 
 }

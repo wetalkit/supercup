@@ -19,18 +19,18 @@
             </div>
           </div>
 
-          <div class="col-md-3 col-sm-3">
+          <div class="col-md-3 col-sm-3 cta">
             @if($listing->status)
               <span class="label label-success booked">Booked</span>
             @else
               @if($user)
                 @if($user->id != $listing->user_id)
-                  <button type="button" class="btn btn-orange btn-orange-inverse pull-right" data-toggle="modal"  data-target="#messageHost">Message Host</button>
+                  <button type="button" class="btn btn-orange btn-orange-inverse" data-toggle="modal"  data-target="#messageHost">Message Host</button>
                 @else
-                  <a type="button" class="btn btn-orange btn-orange-inverse pull-right" href="{{route('listing.edit', $listing->id)}}">Edit</a>
+                  <a type="button" class="btn btn-orange btn-orange-inverse" href="{{route('listing.edit', $listing->id)}}">Edit</a>
                 @endif
               @else
-                <button type="button" class="btn btn-orange btn-orange-inverse pull-right" data-toggle="modal"  data-target="#loginModal">Message Host</button>
+                <button type="button" class="btn btn-orange btn-orange-inverse" data-toggle="modal"  data-target="#loginModal">Message Host</button>
               @endif
             @endif
           </div>
