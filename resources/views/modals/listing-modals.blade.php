@@ -48,12 +48,16 @@
         <h4 class="modal-title">Thank you for listing your place</h4>
       </div>
       <div class="modal-body">
-        <p>Your place is successfully listed. Help us spread the word?</p>
+        <p>We love it! ❤  It’s live! Thank you for being such caring citizen.</p>
+        <p>Let’s share your impact with the community!</p>
         <div class="text-center">
           <div class="fb-share-button" data-href="{{route('listing.show', $listing->id)}}" data-layout="button_count" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="{{route('listing.show', $listing->id)}}">Share</a></div>
           <a class="twitter-share-button"
           href="{{route('listing.show', $listing->id)}}"
-          data-size="large">
+          data-size="large"
+          data-text="I just made Skopje great again!🇲🇰I published free of charge accommodation for Super Cup 2017.🛏 Join me:"
+          data-url="{{route('listing.show', $listing->id)}}"
+          data-hashtags="wetalkit">
         Tweet</a>
         </div>
       </div>

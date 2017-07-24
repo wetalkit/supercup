@@ -5,7 +5,7 @@
         <div class="container">
             <div class="wrapper">
 
-                <h1>Stay in Skopje. For FREE.</h1>
+                <h1>Stay in Skopje. 🛏 It’s FREE. </h1>
                 <h2 class="text-black">Motivated by the recent booking scandal in Skopje, the WeTalkIT community decided to prove that this town can be hospitable as well. This is a website created to offer free tourist accommodation in Skopje for the upcoming UEFA Super Cup 2017.</h1>
 
                 <div class="dropdown-holder row">

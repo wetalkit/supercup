@@ -7,9 +7,9 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta property="og:url"           content="{{ url()->current() }}" />
     <meta property="og:type"          content="website" />
-    <meta property="og:title"         content="Super Cup 2017 Accommodation" />
-    <meta property="og:description"   content="This website is created to offer free tourist accommodation in Skopje for the upcoming UEFA Super Cup." />
-    <meta property="og:image"         content="{{ url('/images/logo.png') }}" />
+    <meta property="og:title"         content="Let’s Make Skopje Great Again🇲🇰" />
+    <meta property="og:description"   content="Super Cup Skopje is an open-source project created by the We Talk IT community, to offer FREE tourist accommodation in Skopje for the upcoming UEFA Super Cup 2017." />
+    <meta property="og:image"         content="{{ url('/images/og-img.png') }}" />
 
     <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">

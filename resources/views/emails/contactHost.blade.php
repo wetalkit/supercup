@@ -26,26 +26,13 @@
 
         <p>"{{ $messageContent }}"</p>
 
-        <table border="0" cellpadding="0" cellspacing="0" class="btn btn-primary">
-          <tbody>
-            <tr>
-              <td align="left">
-                <table border="0" cellpadding="0" cellspacing="0">
-                  <tbody>
-                    <tr>
-                      <td><a href="{{ route('listing.edit', $listing->id) }}" target="_blank">Be {{ $guest->name }}'s host</a> </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+        <p>Let {{ $guest->name }} know that you saw this message by <b style="color:#e25626">replying directly on this email. </b></p>
+        <p>If you agree to host {{ $guest->name }}, please let us know by <a href="{{ route('listing.edit', $listing->id) }}" target="_blank">marking your listing as Booked</a>.</p>
 
-        <p>Thanks for making Skopje great again!</p>
+        <p><b>Thanks for making Skopje great again! 🇲🇰</b></p>
         <br/>
         <i>
-        	<p>{{ config('app.name') }} is a volunteering project from the WeTalkIT developers community. We are not responsible for the interactions that you have with others, so please use good judgment and keep safety in mind when you use our Services.</p>
+        	<p><b>{{ config('app.name') }}</b> is a volunteering project from the WeTalkIT developers community. We are not responsible for the interactions that you have with others, so please use good judgment and keep safety in mind when you use our Services.</p>
         </i>
       </td>
     </tr>
