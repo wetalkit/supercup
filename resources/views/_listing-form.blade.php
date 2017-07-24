@@ -16,6 +16,7 @@
         </div>
         <div class="form-group">
             {!! Form::label('pictures', 'Upload Photo') !!}
+            <p class="small">You can upload multiple photos at once, just hold your ctrl/cmd key while selecting.</p>
             {!! Form::input('file', 'pictures[]', null, ['class' => 'form-control', 'multiple' => 'multiple', 'required' => @$listing->id ? false : true]) !!}
             @foreach($errors->get('pictures') as $error)
             <p class="form-error">{{$error}}</p>
@@ -55,12 +56,12 @@
             <div>
                 {!! Form::label('no_people', 'How many guests can you accomodate?') !!}
             </div>
-            <div class="col-md-3 col-sm-6">
+            <div class="col-sm-3">
                 <p>Guests<br/>
                     <span class="small">Max 2 guests</span>
                 </p>
             </div>
-            <div class="col-md-2 col-sm-6">
+            <div class="col-sm-2">
             {!! Form::select('no_people', [1 => 1, 2 => 2], null, ['class' => 'selectpicker', 'required' => true]) !!}
             </div>
             @foreach($errors->get('no_people') as $error)
@@ -71,12 +72,12 @@
             <div>
                 {!! Form::label('no_beds', 'How many beds are available?') !!}
             </div>
-            <div class="col-md-3 col-sm-6">
+            <div class="col-sm-3">
                 <p>Beds<br/>
                     <span class="small">Max 2 guests</span>
                 </p>
             </div>
-            <div class="col-md-2 col-sm-6">
+            <div class="col-sm-2">
             {!! Form::select('no_beds', [1 => 1, 2 => 2], null, ['class' => 'selectpicker', 'required' => true]) !!}
             </div>
             @foreach($errors->get('no_beds') as $error)
