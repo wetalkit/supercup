@@ -29,7 +29,7 @@ class HomeController extends Controller
 
         $inputs = $request->all();
 
-        $listings = Listing::where('terms_accepted', 1);
+        $listings = Listing::where('terms_accepted', 1)->orderBy('id', 'desc');
 
         if (array_key_exists('beds', $inputs) && $inputs['beds']) {
             $listings->where('no_beds', $inputs['beds']);
