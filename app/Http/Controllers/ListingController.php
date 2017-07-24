@@ -11,6 +11,7 @@ use App\Listing;
 use App\ListingPictures;
 use App\Helpers\Location;
 use Carbon\Carbon;
+use Validator;
 
 class ListingController extends Controller
 {
@@ -42,6 +43,10 @@ class ListingController extends Controller
      */
     public function store(ListingRequest $request)
     {
+        $validate = $this->imageValidate($request);
+        if($validate) {
+            return $validate;
+        }
         $data = $this->prepareListing($request);
         $listing = Listing::create($data);
         $listing->user->update(['email' => $listing->contact_email]);
@@ -88,6 +93,12 @@ class ListingController extends Controller
      */
     public function update(ListingRequest $request, Listing $listing)
     {
+        if($request->pictures) {
+            $validate = $this->imageValidate($request);
+            if($validate) {
+                return $validate;
+            }
+        }
         $data = $this->prepareListing($request);
         $listing->update($data);
         $listing->user->update(['email' => $listing->contact_email]);
@@ -126,6 +137,32 @@ class ListingController extends Controller
                 'listing_id' => $listing->id
             ]);
         }
+    }
+
+    private function imageValidate($request)
+    {
+        if(!$request->pictures) {
+            return redirect()->back()->withInput($request->all())
+                ->withErrors(['pictures' => ['Please upload at least one image of your place.']]);
+        }
+
+        $imageRules = array(
+            'pictures' => 'mimes:jpeg,jpg,png,bmp,gif,svg|max:2000'
+        );
+
+        foreach($request->pictures as $image)
+        {
+            $image = array('pictures' => $image);
+
+            $imageValidator = Validator::make($image, $imageRules);
+
+            if ($imageValidator->fails()) {
+                $messages = $imageValidator->messages();
+                return redirect()->back()->withInput($request->all())->withErrors($messages);
+            }
+        }
+
+        return false;
     }
 
     /**

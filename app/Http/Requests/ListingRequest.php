@@ -28,7 +28,7 @@ class ListingRequest extends FormRequest
             'title' => ['required'],
             'description' => ['required'],
             'address' => ['required'],
-            'pictures.*' => ['mimes:jpeg,jpg,png,bmp,gif,svg'],
+            // 'pictures.0' => ['required','mimes:jpeg,jpg,png,bmp,gif,svg'],
             'no_people' => ['required', 'min:1', 'max:2'],
             'no_beds' => ['required', 'min:1', 'max:2'],
             'daterange' => ['required'],
@@ -39,7 +39,7 @@ class ListingRequest extends FormRequest
         ];
 
         if(!preg_match('/update/', Route::currentRouteName())) {
-            $rules['pictures.*'][] = 'required';
+            // $rules['pictures.*'][] = 'required';
         }
 
         return $rules;
