@@ -509,8 +509,17 @@ section.active-places .row {
     text-align: center;
 }
 
-h3.listing-author {
+h3.listing-title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     font-weight: bold;
+    font-size: 16px;
+    line-height: 21px;
+    margin-bottom: 10px;
+}
+
+h3.listing-author {
     font-size: 16px;
     line-height: 21px;
     margin-bottom: 10px;
