@@ -33,7 +33,9 @@ class ListingRequest extends FormRequest
             'no_beds' => ['required', 'min:1', 'max:2'],
             'daterange' => ['required'],
             'contact_email' => ['email', 'required'],
-            'terms_accepted' => ['required']
+            'terms_accepted' => ['required'],
+            'lat' => ['required'],
+            'lng' => ['required']
         ];
 
         if(!preg_match('/update/', Route::currentRouteName())) {
@@ -52,7 +54,9 @@ class ListingRequest extends FormRequest
     {
         $messages['pictures.*.required'] = 'Please upload an image for the listing.';
         $messages['pictures.*.mimes'] = 'The uploaded file must be an image.';
-        
+        $messages['lat.required'] = 'The listing address is invalid.';
+        $messages['lng.required'] = 'The listing address is invalid.';
+
         return $messages;
     }
 }
