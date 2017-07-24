@@ -18,7 +18,7 @@
                     </div>
 
                    <div class="dropdown col-lg-3 col-sm-3">
-                        <label>Beds</label>
+                        <label class="lbl">Beds</label>
                         <select name="beds" class="selectpicker" title="Number of Beds">
                             @foreach($bedsSelect as $bed)
                                 <option value="{!! $bed !!}" {!! (isset($inputs['beds']) && $inputs['beds']==$bed) ? 'selected' : '' !!}>{!! $bed !!}</option>
@@ -27,7 +27,7 @@
                     </div>
 
                    <div class="dropdown col-lg-3 col-sm-3">
-                        <label>Guests</label>
+                        <label class="lbl">Guests</label>
                         <select name="people" class="selectpicker" title="Number of guests">
                             @foreach($peopleSelect as $people)
                                 <option value="{!! $people !!}" {!! (isset($inputs['people']) && $inputs['people']==$people) ? 'selected' : '' !!}>{!! $people !!}</option>
@@ -61,8 +61,7 @@
 
               <a href="{{ route('listing.show', $listing->id) }}" class="link-item">
                   <div class="col-md-4 col-sm-6">
-                    <div class="gallery-section {{$listing->status ? 'booked' : ''}}">
-                        <img src="{!! $listing->defaultImageSrc ? route('storage', $listing->defaultImageSrc) : '/images/imagena.jpg' !!}" alt={!! $listing->title !!}>
+                    <div class="gallery-section {{$listing->status ? 'booked' : ''}}" style="background-image: url({!! $listing->defaultImageSrc ? route('storage', $listing->defaultImageSrc) : '/images/imagena.jpg' !!})">
                         <span class="label label-booked">Booked</span>
                     </div>
                     <h3 class="listing-author">by {!! $listing->user->name !!}</h3>

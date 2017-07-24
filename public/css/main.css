@@ -371,6 +371,7 @@ section.hero {
     padding-left: 0px !important;
     background: white;
     max-width: 100%;
+    width: initial !important;
 }
 
 .bootstrap-select > .dropdown-toggle.bs-placeholder:focus, 
@@ -565,6 +566,16 @@ a.link-item:hover {
 
 .link-item div {
     margin: 25px auto 0;
+    display: block;
+}
+
+.link-item .gallery-section {
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-bottom: 10px;
+}
+
+.dropdown-holder .lbl {
     display: block;
 }
 
@@ -814,6 +825,7 @@ body.single-listing .row {
 .modal-footer .btn-orange {
     line-height: 14px;
 }
+
 /* GENERAL SMALL VISUAL FIXES */
 section.active-places .row {
     padding: 0px 10px 25px;
@@ -831,6 +843,7 @@ footer ul.links-nav {
     display: flex;
     justify-content: space-around;
 }
+
 /* MEDIA QUERIES / RESPONSIVENESS START */
 
 /* RESPONSIVE MENU START*/
