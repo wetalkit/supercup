@@ -71,6 +71,9 @@
                         <a type="button" class="become-a-host-btn" data-toggle="modal"  data-target="#loginModal">Become a Host</a>
                     @endif
                 </li>
+                <li>
+                    <a type="button" class="btn-orange-inverse spread-love" data-toggle="modal"  data-target="#shareModal"><i class="glyphicon glyphicon-heart-empty"></i> Spread the love</a>
+                </li>
                 @if (!$user)
                     <li><a href="{{ route('login') }}">Login</a></li>
                 @else
@@ -115,9 +118,28 @@
     <script src="{{ asset('js/moment.js') }}"></script>
     <script src="{{ asset('js/daterangepicker.js') }}"></script>
     <script src="{{ asset('js/main.js') }}"></script>
-    
+    <script>
+        window.twttr = (function(d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0],
+            t = window.twttr || {};
+          if (d.getElementById(id)) return t;
+          js = d.createElement(s);
+          js.id = id;
+          js.src = "https://platform.twitter.com/widgets.js";
+          fjs.parentNode.insertBefore(js, fjs);
+
+          t._e = [];
+          t.ready = function(f) {
+            t._e.push(f);
+          };
+
+          return t;
+        }(document, "script", "twitter-wjs"));
+    </script>
+
     @yield('additionalJs')
 
     @include('modals.signup')
+    @include('modals.share')
 </body>
 </html>

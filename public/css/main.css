@@ -546,6 +546,12 @@ a.become-a-host-btn, .btn-orange {
     color: #e25626;
 }
 
+.spread-love {
+    font-size: 17px;
+    padding: 10px 15px;
+    border-radius: 3px;
+}
+
 a.become-a-host-btn:hover, .btn-orange:hover, .btn-orange-inverse:hover {
      background: #ce4719;
      color: white;
