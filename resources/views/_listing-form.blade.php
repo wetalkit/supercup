@@ -2,21 +2,21 @@
     <div class="col-md-6">
         <div class="form-group">
             {!! Form::label('title', 'Title') !!}
-            {!! Form::text('title', null, ['class' => 'form-control', 'placeholder' => 'How do you want your listing to appear in search?']) !!}
+            {!! Form::text('title', null, ['class' => 'form-control', 'placeholder' => 'How do you want your listing to appear in search?', 'required' => true]) !!}
             @foreach($errors->get('title') as $error)
             <p class="form-error">{{$error}}</p>
             @endforeach
         </div>
         <div class="form-group">
             {!! Form::label('description', 'Summary') !!}
-            {!! Form::textarea('description', null, ['class' => 'form-control', 'placeholder' => 'Brief overview of your place.', 'rows' => 8]) !!}
+            {!! Form::textarea('description', null, ['class' => 'form-control', 'placeholder' => 'Brief overview of your place.', 'rows' => 8, 'required' => true]) !!}
             @foreach($errors->get('description') as $error)
             <p class="form-error">{{$error}}</p>
             @endforeach
         </div>
         <div class="form-group">
             {!! Form::label('pictures', 'Upload Photo') !!}
-            {!! Form::input('file', 'pictures[]', null, ['class' => 'form-control', 'multiple' => 'multiple', 'required' => @$listing->id ? false : true]) !!}
+            {!! Form::input('file', 'pictures[]', null, ['class' => 'form-control', 'multiple' => true, 'required' => @$listing->id ? false : true]) !!}
             @foreach($errors->get('pictures') as $error)
             <p class="form-error">{{$error}}</p>
             @endforeach
@@ -41,6 +41,9 @@
             {!! Form::input('hidden', 'lat') !!}
             {!! Form::input('hidden', 'lng') !!}
             @foreach($errors->get('address') as $error)
+            <p class="form-error">{{$error}}</p>
+            @endforeach
+            @foreach($errors->get('lat') as $error)
             <p class="form-error">{{$error}}</p>
             @endforeach
         </div>
