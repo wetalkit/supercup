@@ -29,7 +29,18 @@ class HomeController extends Controller
 
         $inputs = $request->all();
 
-        $listings = Listing::where('terms_accepted', 1)->orderBy('distance_stadium', 'asc');
+        return view('home', compact('inputs', 'bedsSelect', 'peopleSelect'));
+    }
+
+    /**
+     * Lists and paginates the listings.
+     * 
+     * @return JSON
+     */
+    public function listListings(Request $request)
+    {
+        $inputs = $request->all();
+        $listings = Listing::where('terms_accepted', 1)->orderBy('id', 'desc');
 
         if (array_key_exists('beds', $inputs) && $inputs['beds']) {
             $listings->where('no_beds', $inputs['beds']);
@@ -48,9 +59,13 @@ class HomeController extends Controller
             $listings->where('date_to', '>=', $dateTo);
         }
         
-        $listings = $listings->get();
+        $listings = $listings->paginate(21);
 
-        return view('home', compact('listings', 'inputs', 'bedsSelect', 'peopleSelect'));
+        foreach ($listings as $listing) {
+            $listing->view = view('partials.listing', compact('listing'))->render();
+        }
+
+        return response()->json(compact('listings'));
     }
 
     /**

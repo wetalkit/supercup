@@ -986,3 +986,9 @@ footer ul.links-nav {
     }
 
 }
+
+#load-more {
+    width: 50%;
+    position: relative;
+    margin: auto;
+}
