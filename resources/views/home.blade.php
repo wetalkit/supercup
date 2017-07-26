@@ -73,7 +73,7 @@
             <p id="no-listings" style="display: none;">There aren't any available listings at the moment. Please check back later.</p>
             <p id="listing-end" style="display: none;">It seems you've reached the end. Change the filters or try again later.</p>
 
-            <button class="btn btn-find" id="load-more">Load More</button>
+            <button class="btn btn-orange-inverse" id="load-more">Load More</button>
         </div>
     </section>
 
