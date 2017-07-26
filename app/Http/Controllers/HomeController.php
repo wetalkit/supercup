@@ -29,28 +29,7 @@ class HomeController extends Controller
 
         $inputs = $request->all();
 
-        $listings = Listing::where('terms_accepted', 1)->orderBy('distance_stadium', 'asc');
-
-        if (array_key_exists('beds', $inputs) && $inputs['beds']) {
-            $listings->where('no_beds', $inputs['beds']);
-        }
-
-        if (array_key_exists('people', $inputs) && $inputs['people']) {
-            $listings->where('no_people', $inputs['people']);
-        }
-
-        if (array_key_exists('daterange', $inputs) && $inputs['daterange']) {
-            $inputs['dates'] = explode(' - ', $inputs['daterange']);
-            $dateFrom = Carbon::createFromFormat('d M Y H:i:s', trim($inputs['dates'][0]).' 2017 23:59:29');
-            $dateTo = Carbon::createFromFormat('d M Y H:i:s', trim($inputs['dates'][1]).' 2017 00:00:00');
-
-            $listings->where('date_from', '<=', $dateFrom);
-            $listings->where('date_to', '>=', $dateTo);
-        }
-        
-        $listings = $listings->paginate(2);
-
-        return view('home', compact('listings', 'inputs', 'bedsSelect', 'peopleSelect'));
+        return view('home', compact('inputs', 'bedsSelect', 'peopleSelect'));
     }
 
     /**
@@ -80,7 +59,7 @@ class HomeController extends Controller
             $listings->where('date_to', '>=', $dateTo);
         }
         
-        $listings = $listings->paginate(3);
+        $listings = $listings->paginate(21);
 
         foreach ($listings as $listing) {
             $listing->view = view('partials.listing', compact('listing'))->render();
