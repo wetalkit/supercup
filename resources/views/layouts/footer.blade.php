@@ -9,7 +9,7 @@
 			<ul class="links-nav">
 				<li><a href="/about">About</li>
 				<li><a href="/faq">FAQ</a></li>
-				<li><a href="/privacy">Privacy</a></li>
+				<li><a href="/privacy">Terms</a></li>
 				<li><a href="/bug">Report a bug</li>
 			</ul>
 		</div>
