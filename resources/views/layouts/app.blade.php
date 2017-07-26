@@ -113,6 +113,7 @@
     @include('layouts.footer')
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="{{ asset('js/jquery.jscroll.js') }}"></script>
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap-select.js') }}"></script>
     <script src="{{ asset('js/moment.js') }}"></script>
