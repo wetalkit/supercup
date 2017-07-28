@@ -72,7 +72,10 @@
                     @endif
                 </li>
                 <li>
-                    <a type="button" class="btn-orange-inverse spread-love" data-toggle="modal"  data-target="#shareModal"><i class="glyphicon glyphicon-heart-empty"></i> Spread the love</a>
+                    <a class="btn-orange-inverse spread-love" target="_blank" href="https://www.producthunt.com/posts/super-cup-2017-skopje">
+                        <img src="/images/logo-ph.png" alt="" style="max-height:40px">
+                        Give us a vote
+                    </a>
                 </li>
                 @if (!$user)
                     <li><a href="{{ route('login') }}">Login</a></li>
