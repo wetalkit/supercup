@@ -179,7 +179,6 @@ return [
 
         Laravel\Socialite\SocialiteServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
-        'Folklore\Image\ImageServiceProvider',
 
 
     ],
@@ -233,7 +232,6 @@ return [
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
-        'Image' => 'Folklore\Image\Facades\Image',
     ],
 
 ];
