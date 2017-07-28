@@ -992,3 +992,28 @@ footer ul.links-nav {
     position: relative;
     margin: auto;
 }
+.first-img{
+    position: relative; 
+    margin-top: 10px;
+}
+.third-img{
+    padding-top: 10px;
+}
+.featured{
+    display: block;
+    float: none;
+    margin: auto;
+
+}
+.featured-title{
+    display: block;
+    float: none;
+    margin: auto;
+}
+.featured-in{
+    padding-bottom: 20px;
+}
+.hover-class {
+    -webkit-filter: grayscale(100%); 
+    filter: grayscale(100%);
+}

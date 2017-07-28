@@ -48,6 +48,19 @@
             </div> <!-- wrapper -->
         </div>
     </section>
+    <section class="featured-in container">
+        <div class="row">
+            <div class="col-md-3">
+            <h1 class="title-heading featured-title">
+                <strong>Featured in:</strong>
+            </h1>
+            </div>
+            <div class="col-md-3 first-img"><a href="http://www.balkaninsight.com/en/article/macedonians-offer-free-lodging-for-uefa-super-cup-07-18-2017" target="_blank"><img src="/images/BalkanInsight.jpg" width="150" height="150" class="featured"/></a></div>
+            <div class="col-md-3"><a href="http://balkans.aljazeera.net/vijesti/superprofit-za-superkup-u-skoplju" target="_blank"><img src="/images/aljazeera_balkans-logo.png" width="150" height="150" class="featured"/></a></div>
+            <div class="col-md-3 third-img"><a href="https://globalvoices.org/2017/07/27/in-macedonia-geeks-create-free-accommodation-platform-in-reaction-to-hotel-price-hike-for-super-cup-fans/" target="_blank"><img src="/images/Logo-GlobalVoices.png" width="150" height="150" class="featured" /></a></div>
+        </div>
+
+    </section>
 
     <section class="active-places container">
         <div class="row">
@@ -88,7 +101,6 @@ var articles;
 function loadListings() {
     $("#load-more").hide();
     $(".loading").show();
-
     var ajaxData = {
         "daterange": $("input[name^='daterange']").val(),
         "beds": $("#beds :selected").val(),
@@ -130,8 +142,18 @@ function loadListings() {
 loadListings();
 
 $(document).ready(function() {
+    $(".featured").addClass('hover-class');
+    $( ".featured" ).hover(
+      function() {
+        $( this ).removeClass( "hover-class" );
+      }, function() {
+        $( this ).addClass( "hover-class" );
+      }
+    );
     $("#load-more").click(function(){
+
         loadListings();
+
     });
 });
 </script>
