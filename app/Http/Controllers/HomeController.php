@@ -40,7 +40,7 @@ class HomeController extends Controller
     public function listListings(Request $request)
     {
         $inputs = $request->all();
-        $listings = Listing::where('terms_accepted', 1)->orderBy('id', 'desc');
+        $listings = Listing::where('terms_accepted', 1)->orderBy('distance_stadium', 'asc');
 
         if (array_key_exists('beds', $inputs) && $inputs['beds']) {
             $listings->where('no_beds', $inputs['beds']);
