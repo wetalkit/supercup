@@ -56,7 +56,7 @@
             </h1>
             </div>
             <div class="col-md-3"><a href="https://techcrunch.com/2017/07/31/balkan-startups-offer-free-housing-service-after-football-price-gouging-row/" target="_blank"><img src="/images/tc-logo.svg" class="featured" style="max-height:50px"/></a></div>
-            <div class="col-md-3 first-img"><a href="http://www.balkaninsight.com/en/article/macedonians-offer-free-lodging-for-uefa-super-cup-07-18-2017" target="_blank"><img src="/images/BalkanInsight.jpg" width="150" height="150" class="featured"/></a></div>
+            <div class="col-md-3"><a href="http://www.mirror.co.uk/sport/football/news/manchester-united-fans-hit-hotel-10928708" target="_blank"><img src="/images/mirror-logo.png" width="150" height="150" class="featured"/></a></div>
             <div class="col-md-3 third-img"><a href="https://globalvoices.org/2017/07/27/in-macedonia-geeks-create-free-accommodation-platform-in-reaction-to-hotel-price-hike-for-super-cup-fans/" target="_blank"><img src="/images/Logo-GlobalVoices.png" width="150" height="150" class="featured" /></a></div>
         </div>
 
