@@ -41,7 +41,7 @@
 
           <div class="images-slider">
             @if(count($listing->pictures) == 0)
-              <img src="/images/imagena.jpg" alt="{!! $listing->title !!}"/>
+              <img src="/images/imagena.jpeg" alt="{!! $listing->title !!}"/>
             @endif
             @foreach($listing->pictures as $picture) 
               <img src="{{route('storage', $picture->picture)}}" alt="{!! $listing->title !!}"/>
