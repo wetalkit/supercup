@@ -107,4 +107,14 @@ class HomeController extends Controller
     {
         return view('bug');
     }
+
+    /**
+     * Shows some project statistics
+     * 
+     * @return view
+     */
+    public function numbers()
+    {
+        return view('numbers');
+    }
 }
